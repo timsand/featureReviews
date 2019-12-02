@@ -3,9 +3,10 @@ import React from 'react';
 
 const Comment = (props) => {
   return (
-    <div class='commentBox'>
+    <div className='commentBox'>
       <h5>{props.person}</h5>
       <h4>{props.title}</h4>
+      <span>{props.rating} RATING</span>
       <h5>{props.date} (DATE)</h5>
       <h5>VERIFIED PURCHASE</h5>
       <p>{props.body}</p>
