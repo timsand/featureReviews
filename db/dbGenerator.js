@@ -24,21 +24,13 @@ var ratings = [1, 2, 3, 4, 5];
 
 
 
-
-
-
-
-
-
-
-
 var items = [
   {
     id: 1,
     name: 'Bottled Water',
     link: 'https://www.amazon.com/Nestle-Pure-Life-Purified-Plastic/dp/B00NP79AI8/ref=sr_1_4?fpw=pantry&keywords=bottled+water&qid=1574886162&s=pantry&sr=8-4',
     price: 2.23,
-    comments: []
+    comments: [],
   },
   {
     id: 2,
@@ -132,6 +124,8 @@ for (let i = 0; i < items.length; i++) {
     comment.body = body;
     comment.rating = rating;
     comment.itemName = itemName;
+    comment.helpfulCount = 0;
+    comment.date = 'TODO';
     items[i].comments.push(comment);
   }
 }
@@ -144,10 +138,5 @@ for (let i = 0; i < items.length; i++) {
 //     console.log("Multiple documents inserted to Collection");
 //   }
 // });
-
-
-for (let i = 0; i < items[0].comments.length; i++) {
-  console.log(items[0].comments[i])
-}
 
 module.exports = items;

@@ -2,10 +2,10 @@ const mongodb = require('mongodb')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 //uncomment me and add password
-// const pass = 'fixMe';
+const pass = 'gammazonReview';
 
 
-// const generatedItems = require('./dbGenerator.js') //UNCOMMENT THIS FOR GENERATING A NEW DB
+const generatedItems = require('./dbGenerator.js') //UNCOMMENT THIS FOR GENERATING A NEW DB
 
 mongoose.connect(`mongodb+srv://gammazonReview:${pass}@gammazonreviews-iixhb.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true });
 
@@ -30,13 +30,13 @@ connection.once('open', function () {
 
 //UNCOMMENT THE BELOW LINE TO GENERATE A NEW DB... WILL REQUIRE THE GENERATED ITEMS IMPORT TO WORK.
 
-// reviewModel.collection.insert(generatedItems, function (err, docs) {
-//   if (err) {
-//     return console.error(err);
-//   } else {
-//     console.log("Multiple documents inserted to Collection");
-//   }
-// });
+reviewModel.collection.insert(generatedItems, function (err, docs) {
+  if (err) {
+    return console.error(err);
+  } else {
+    console.log("Multiple documents inserted to Collection");
+  }
+});
 
 
 
