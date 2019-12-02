@@ -1,5 +1,5 @@
 import React from 'react';
-import HelpfulButton from './helpfulButton.jsx';
+import BottomButtons from './BottomButtons.jsx';
 
 
 const Comment = (props) => {
@@ -8,13 +8,11 @@ const Comment = (props) => {
       <h5>{props.person}</h5>
       <h4>{props.title}</h4>
       <span>{props.rating} RATING</span>
-      <h5>{props.date} (DATE)</h5>
+      <h5>{props.date}</h5>
       <h5>VERIFIED PURCHASE</h5>
       <p>{props.body}</p>
       <span>{props.helpfulCount} people found this helpful</span>
-      <HelpfulButton buttonClicked={false}/>
-      <button>COMMENT</button>
-      <button>REPORT ABUSE</button>
+      <BottomButtons id={props.id} helpfulClicked={props.helpfulClicked} buttonClicked={props.buttonClicked}/>
     </div>
   )
 }

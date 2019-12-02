@@ -2,7 +2,7 @@ const mongodb = require('mongodb')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 //uncomment me and add password
-const pass = 'fixMe';
+const pass = 'gammazonReview';
 
 
 // const generatedItems = require('./dbGenerator.js') //UNCOMMENT THIS FOR GENERATING A NEW DB
@@ -52,9 +52,24 @@ const fetchAllComments = async function() {
 //   }
 // });
 
+const updateReviewCount = (name, id) => {
+  var updatePromise = new Promise((resolve, reject) => {
+    reviewModel.collection.update({name: `${name}`}, { $inc: {[`comments.${id}.helpfulCount`]: 1} }, (err, result) => {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    } )
+  })
+
+  return updatePromise;
+}
+
 
 
 
 
 module.exports.connection = connection;
 module.exports.fetchAllComments = fetchAllComments;
+module.exports.updateReviewCount = updateReviewCount;

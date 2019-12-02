@@ -10,6 +10,7 @@ class App extends React.Component{
       comments: []
     };
     this.getAllComments = this.getAllComments.bind(this);
+    this.helpfulClicked = this.helpfulClicked.bind(this);
   }
 
   getAllComments() {
@@ -25,6 +26,13 @@ class App extends React.Component{
     this.getAllComments();
   }
 
+  helpfulClicked(event) {
+    var id = event.target.id;
+    var comments = this.state.comments;
+    comments[id].buttonClicked = true;
+    this.setState({comments: comments})
+  }
+
 
 
 
@@ -35,7 +43,7 @@ class App extends React.Component{
         <p>
           Hello there General Kenobi..
         </p>
-        <CommentContainer comments={this.state.comments}/>
+        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked}/>
       </div>
     )
   }

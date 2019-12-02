@@ -25,6 +25,18 @@ app.get('/comments', (req, res) => {
     })
 })
 
+app.get('/testing', (req, res) => {
+  db.updateReviewCount('Bottled Water', 0)
+  .then((data) => {
+    console.log(data);
+    res.end();
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(400).end();
+  })
+})
+
 
 
 
