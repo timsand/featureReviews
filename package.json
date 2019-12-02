@@ -12,6 +12,8 @@
     "react-dev": "webpack -d --watch"
   },
   "dependencies": {
+    "@material-ui/core": "^4.7.1",
+    "@material-ui/lab": "^4.0.0-alpha.34",
     "axios": "^0.19.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
@@ -19,8 +21,8 @@
     "mongoose": "^5.7.13",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",

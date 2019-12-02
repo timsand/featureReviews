@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import Axios from 'axios';
 import CommentContainer from './commentContainer.jsx';
 import Sidebar from './sidebar.jsx';
+import Button from '@material-ui/core/Button';
 
-class App extends React.Component{
+class App extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -17,10 +18,10 @@ class App extends React.Component{
 
   getAllComments() {
     Axios.get('/comments')
-    .then((data) => {
-      var comments = data.data[0].comments;
-      this.setState({comments: comments})
-    })
+      .then((data) => {
+        var comments = data.data[0].comments;
+        this.setState({ comments: comments })
+      })
   }
 
   writeReview() {
@@ -29,7 +30,7 @@ class App extends React.Component{
   }
 
 
-  
+
   helpfulClicked(event) {
     var id = event.target.id;
     var comments = this.state.comments;
@@ -40,10 +41,10 @@ class App extends React.Component{
       id: id,
       itemName: itemName
     })
-    this.setState({comments: comments})
+    this.setState({ comments: comments })
   }
-  
-  
+
+
   componentDidMount() {
     this.getAllComments();
   }
@@ -54,7 +55,8 @@ class App extends React.Component{
     return (
       <div>
         <Sidebar />
-        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked}/>
+        <Button variant="contained" color="primary">Hello World</Button>
+        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Rating from '@material-ui/lab/Rating';
 import BottomButtons from './BottomButtons.jsx';
 
 
@@ -7,7 +8,7 @@ const Comment = (props) => {
     <div className='commentBox'>
       <h5>{props.person}</h5>
       <h4>{props.title}</h4>
-      <span>{props.rating} RATING</span>
+      <Rating name="testRating" value={props.rating} readOnly={true} size="small"/>
       <h5>{props.date}</h5>
       <h5>VERIFIED PURCHASE</h5>
       <p>{props.body}</p>
