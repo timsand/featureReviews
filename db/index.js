@@ -52,9 +52,24 @@ const fetchAllComments = async function() {
 //   }
 // });
 
+const updateReviewCount = (name, id) => {
+  var updatePromise = new Promise((resolve, reject) => {
+    reviewModel.collection.update({name: `${name}`}, { $inc: {[`comments.${id}.helpfulCount`]: 1} }, (err, result) => {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    } )
+  })
+
+  return updatePromise;
+}
+
 
 
 
 
 module.exports.connection = connection;
 module.exports.fetchAllComments = fetchAllComments;
+module.exports.updateReviewCount = updateReviewCount;

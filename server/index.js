@@ -25,6 +25,18 @@ app.get('/comments', (req, res) => {
     })
 })
 
+app.patch('/comments', (req, res) => {
+  let id = req.body.id;
+  let itemName = req.body.itemName
+  db.updateReviewCount(itemName, id)
+  .then((data) => {
+    res.end();
+  })
+  .catch((err) => {
+    res.status(400).end();
+  })
+})
+
 
 
 

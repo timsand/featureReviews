@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
 import CommentContainer from './commentContainer.jsx';
+import Sidebar from './sidebar.jsx';
 
 class App extends React.Component{
   constructor() {
@@ -10,6 +11,8 @@ class App extends React.Component{
       comments: []
     };
     this.getAllComments = this.getAllComments.bind(this);
+    this.helpfulClicked = this.helpfulClicked.bind(this);
+    this.writeReview = this.writeReview.bind(this);
   }
 
   getAllComments() {
@@ -20,22 +23,38 @@ class App extends React.Component{
     })
   }
 
+  writeReview() {
+    //TODO
+    //Need to find a way to render this on the page, without redirects
+  }
 
+
+  
+  helpfulClicked(event) {
+    var id = event.target.id;
+    var comments = this.state.comments;
+    var itemName = comments[id].itemName;
+    console.log(itemName);
+    comments[id].buttonClicked = true;
+    Axios.patch('/comments', {
+      id: id,
+      itemName: itemName
+    })
+    this.setState({comments: comments})
+  }
+  
+  
   componentDidMount() {
     this.getAllComments();
   }
 
 
 
-
-
   render() {
     return (
       <div>
-        <p>
-          Hello there General Kenobi..
-        </p>
-        <CommentContainer comments={this.state.comments}/>
+        <Sidebar />
+        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked}/>
       </div>
     )
   }

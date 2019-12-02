@@ -17,6 +17,9 @@ var listOfTitles = [
   'Just what I needed to keep me going',
   'Gammazon is literally more powerful than the government'
 ];
+var listOfDates = [
+  'June 13, 2017', 'July 8, 2019', 'December 2, 2019', 'December 2, 2019', 'December 2, 2019', 'January 14, 2016', 'August 4, 2018'
+]
 var ratings = [1, 2, 3, 4, 5];
 
 
@@ -119,13 +122,16 @@ for (let i = 0; i < items.length; i++) {
     let title = listOfTitles[idx];
     idx = Math.floor(Math.random() * ratings.length);
     let rating = ratings[idx]
+    idx = Math.floor(Math.random() * listOfDates.length)
+    let date = listOfDates[idx];
+    comment.id = x;
     comment.person = person;
     comment.title = title;
     comment.body = body;
     comment.rating = rating;
     comment.itemName = itemName;
     comment.helpfulCount = 0;
-    comment.date = 'TODO';
+    comment.date = date;
     items[i].comments.push(comment);
   }
 }
