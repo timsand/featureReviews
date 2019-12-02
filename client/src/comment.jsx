@@ -1,4 +1,5 @@
 import React from 'react';
+import HelpfulButton from './helpfulButton.jsx';
 
 
 const Comment = (props) => {
@@ -11,7 +12,7 @@ const Comment = (props) => {
       <h5>VERIFIED PURCHASE</h5>
       <p>{props.body}</p>
       <span>{props.helpfulCount} people found this helpful</span>
-      <button>HELPFUL</button>
+      <HelpfulButton buttonClicked={false}/>
       <button>COMMENT</button>
       <button>REPORT ABUSE</button>
     </div>
