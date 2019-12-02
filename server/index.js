@@ -25,14 +25,14 @@ app.get('/comments', (req, res) => {
     })
 })
 
-app.get('/testing', (req, res) => {
-  db.updateReviewCount('Bottled Water', 0)
+app.patch('/comments', (req, res) => {
+  let id = req.body.id;
+  let itemName = req.body.itemName
+  db.updateReviewCount(itemName, id)
   .then((data) => {
-    console.log(data);
     res.end();
   })
   .catch((err) => {
-    console.log(err);
     res.status(400).end();
   })
 })

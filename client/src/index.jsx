@@ -29,7 +29,13 @@ class App extends React.Component{
   helpfulClicked(event) {
     var id = event.target.id;
     var comments = this.state.comments;
+    var itemName = comments[id].itemName;
+    console.log(itemName);
     comments[id].buttonClicked = true;
+    Axios.patch('/comments', {
+      id: id,
+      itemName: itemName
+    })
     this.setState({comments: comments})
   }
 
