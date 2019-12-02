@@ -2,7 +2,7 @@ const mongodb = require('mongodb')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 //uncomment me and add password
-// const pass = 'fillMeIn';
+const pass = 'gammazonReview';
 
 
 // const generatedItems = require('./dbGenerator.js') //UNCOMMENT THIS FOR GENERATING A NEW DB
@@ -12,7 +12,7 @@ mongoose.connect(`mongodb+srv://gammazonReview:${pass}@gammazonreviews-iixhb.mon
 var connection = mongoose.connection;
 
 var reviewSchema = new Schema({
-  id: Number,
+  id: {type: Number, unique: true},
   name: String,
   link: Schema.Types.Mixed,
   price: Number,
@@ -26,6 +26,20 @@ connection.on('error', () => {
 connection.once('open', function () {
   console.log('connected')
 });
+
+
+const fetchAllComments = async function() {
+  var queryPromise = new Promise((resolve, reject) => {
+    reviewModel.find({}, (err, result) => {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+  return queryPromise;
+}
 
 
 //UNCOMMENT THE BELOW LINE TO GENERATE A NEW DB... WILL REQUIRE THE GENERATED ITEMS IMPORT TO WORK.
@@ -42,4 +56,5 @@ connection.once('open', function () {
 
 
 
-module.exports = connection;
+module.exports.connection = connection;
+module.exports.fetchAllComments = fetchAllComments;
