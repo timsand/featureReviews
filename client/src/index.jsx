@@ -56,10 +56,10 @@ class App extends React.Component {
       <div>
         <Sidebar />
         <Button variant="contained" color="primary">Hello World</Button>
-        <CommentContainer className="tsCommentContainer" comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
+        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
       </div>
     )
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('reviewContainer'))
+ReactDOM.render(<App />, document.getElementById('tsReviewContainer'))

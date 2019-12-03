@@ -15,10 +15,10 @@ const Comment = (props) => {
         <Rating name="testRating" value={props.rating} readOnly={true} size="small" />
         <span className="tsReviewTitle">{props.title}</span>
       </div>
-      <h5>{props.date}</h5>
+      <h5 className="tsReviewDate">{props.date}</h5>
       <h5 className="tsVerifiedPurchase">Verified Purchase</h5>
       <p>{props.body}</p>
-      <span>{props.helpfulCount} people found this helpful</span>
+      <span className="tsHelpfulCount">{props.helpfulCount} people found this helpful</span>
       <BottomButtons id={props.id} helpfulClicked={props.helpfulClicked} buttonClicked={props.buttonClicked} />
     </div>
   )
