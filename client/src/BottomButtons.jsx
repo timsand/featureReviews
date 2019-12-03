@@ -6,11 +6,12 @@ const BottomButtons = (props) => {
   if (props.buttonClicked) {
     return (
       <div className="tsBottomButtons">
-        Thank you for your feedback.
+        <span className="tsHelpfulSubmitted">√</span>
+        <span className="tsHelpfulSubmitted">Thank you for your feedback.</span>
         <a className="tsButtonSeperator"></a>
-        <button className="tsCommentButton">COMMENT</button>
+        <button className="tsCommentButton">Comment</button>
         <a className="tsButtonSeperator"></a>
-        <button className="tsReportAbuseButton">REPORT ABUSE</button>
+        <button className="tsReportAbuseButton">Report Abuse</button>
       </div>
     )
   } else {

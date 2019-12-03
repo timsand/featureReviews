@@ -55,6 +55,12 @@
   font-size: 13px;
 }
 
+.tsHelpfulSubmitted {
+  margin-right: 12px;
+  color: #007600;
+  font-size: 12px;
+}
+
 .tsReportAbuseButton {
   border: none;
   background: none;
