@@ -11,7 +11,7 @@ const BottomButtons = (props) => {
         <a className="tsButtonSeperator"></a>
         <button className="tsCommentButton">Comment</button>
         <a className="tsButtonSeperator"></a>
-        <button className="tsReportAbuseButton">Report Abuse</button>
+        <button className="tsReportAbuseButton">Report abuse</button>
       </div>
     )
   } else {
@@ -21,7 +21,7 @@ const BottomButtons = (props) => {
         <a className="tsButtonSeperator"></a>
         <button className="tsCommentButton">Comment</button>
         <a className="tsButtonSeperator"></a>
-        <button className="tsReportAbuseButton">Report Abuse</button>
+        <button className="tsReportAbuseButton">Report abuse</button>
       </div>
     )
   }

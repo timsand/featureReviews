@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Axios from 'axios';
 import CommentContainer from './commentContainer.jsx';
 import Sidebar from './sidebar.jsx';
-import Button from '@material-ui/core/Button';
 
 class App extends React.Component {
   constructor() {
@@ -35,7 +34,6 @@ class App extends React.Component {
     var id = event.target.id;
     var comments = this.state.comments;
     var itemName = comments[id].itemName;
-    console.log(itemName);
     comments[id].buttonClicked = true;
     Axios.patch('/comments', {
       id: id,
@@ -55,7 +53,6 @@ class App extends React.Component {
     return (
       <div>
         <Sidebar />
-        <Button variant="contained" color="primary">Hello World</Button>
         <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
       </div>
     )

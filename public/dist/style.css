@@ -24,6 +24,11 @@
   margin-right: 10px;
 }
 
+.tsBottomCommentBox {
+  background-color: grey;
+  font-size: 13px;
+}
+
 .tsCommentBox {
   margin-top: 20px;
 }
