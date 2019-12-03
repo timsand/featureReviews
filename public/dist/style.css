@@ -1,3 +1,16 @@
 .commentBox {
   border: solid black 1px;
 }
+
+.tsVerifiedPurchase {
+  color: #c45500;
+  font-size: 75%;
+}
+
+.tsAvatarContainer {
+  display: flex;
+}
+
+.tsReviewTitleContainer {
+  display: flex;
+}
