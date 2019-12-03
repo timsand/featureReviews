@@ -13,7 +13,7 @@ const Comment = (props) => {
       </div>
       <div className="tsReviewTitleContainer">
         <Rating name="testRating" value={props.rating} readOnly={true} size="small" />
-        <h4>{props.title}</h4>
+        <span className="tsReviewTitle">{props.title}</span>
       </div>
       <h5>{props.date}</h5>
       <h5 className="tsVerifiedPurchase">Verified Purchase</h5>

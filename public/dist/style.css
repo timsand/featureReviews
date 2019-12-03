@@ -14,3 +14,8 @@
 .tsReviewTitleContainer {
   display: flex;
 }
+
+.tsReviewTitle {
+  font-weight: bold;
+  font-size: 85%;
+}
