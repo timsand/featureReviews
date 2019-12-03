@@ -56,7 +56,7 @@ class App extends React.Component {
       <div>
         <Sidebar />
         <Button variant="contained" color="primary">Hello World</Button>
-        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
+        <CommentContainer className="tsCommentContainer" comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
       </div>
     )
   }

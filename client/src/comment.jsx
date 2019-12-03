@@ -6,7 +6,7 @@ import BottomButtons from './BottomButtons.jsx';
 
 const Comment = (props) => {
   return (
-    <div className='commentBox'>
+    <div className='tsCommentBox'>
       <div className="tsAvatarContainer">
         <Avatar>?</Avatar>
         <h5>{props.person}</h5>
