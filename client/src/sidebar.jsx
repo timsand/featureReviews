@@ -14,7 +14,7 @@ const Sidebar = (props) => {
       <div>
         <h5>Review this product</h5>
         <span>Share your thoughts with other customers</span>
-        <button>Write a customer review</button>
+        <button className="sidebarSubmitReview">Write a customer review</button>
       </div>
     </div>
   )

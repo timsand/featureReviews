@@ -78,6 +78,10 @@
   cursor: pointer;
 }
 
+.tsReviewContainer {
+  display: flex;
+}
+
 .tsReviewDate {
   color: #555;
   font-size: 13px;
