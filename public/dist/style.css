@@ -78,8 +78,13 @@
   cursor: pointer;
 }
 
-.tsReviewContainer {
+#tsSubReviewContainer {
   display: flex;
+  flex-direction: row;
+}
+
+#tsSubReviewContainer > * {
+  margin-right: 30px;
 }
 
 .tsReviewDate {

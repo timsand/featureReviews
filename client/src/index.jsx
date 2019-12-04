@@ -51,7 +51,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="tsSubReviewContainer">
         <Sidebar />
         <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
       </div>
