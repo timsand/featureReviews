@@ -17,7 +17,7 @@ app.get('/comments', (req, res) => {
   //will be used to fetch all comments
   db.fetchAllComments()
     .then((output) => {
-      var average = computeAverage(output[0].comments)
+      // var average = computeAverage(output[0].comments) //To be implemented once users can submit reviews
       output = JSON.stringify(output);
       res.end(output);
     })
