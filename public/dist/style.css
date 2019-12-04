@@ -118,6 +118,16 @@ body {
   text-decoration: underline;
 }
 
+.tsHistogramRatingOverview {
+  margin-left: 15px;
+  font-size: 17px;
+}
+
+.tsHistogramTitle {
+  display: flex;
+  margin-bottom: 25px;
+}
+
 .tsHistogramPercents {
   color: #0066c0;
   font-size: 13px;
@@ -148,4 +158,16 @@ body {
 .tsVerifiedPurchase {
   color: #c45500;
   font-size: 11px;
+}
+
+#tsCustomerTitle {
+  font-size: 21px;
+  font-weight: 400;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#tsHistogramRatingCount {
+  color: #555;
+  font-size: 13px;
 }
