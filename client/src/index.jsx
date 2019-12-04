@@ -10,11 +10,14 @@ class App extends React.Component {
     this.state = {
       comments: [],
       totalRating: 0,
-      individualRatings: []
+      individualRatings: [],
+      filteredComments: []
     };
     this.getAllComments = this.getAllComments.bind(this);
     this.helpfulClicked = this.helpfulClicked.bind(this);
     this.writeReview = this.writeReview.bind(this);
+    this.filterByStars = this.filterByStars.bind(this);
+    this.clearFilter = this.clearFilter.bind(this);
   }
 
   getAllComments() {
@@ -30,6 +33,18 @@ class App extends React.Component {
   writeReview() {
     //TODO
     //Need to find a way to render this on the page, without redirects
+  }
+
+  clearFilter() {
+    this.setState({filteredComments: []})
+  }
+
+  filterByStars(val) {
+    const comments = this.state.comments;
+    const filteredComments = comments.filter((comment) => {
+      return comment.rating === val;
+    })
+    this.setState({filteredComments: filteredComments})
   }
 
 
@@ -54,12 +69,21 @@ class App extends React.Component {
 
 
   render() {
-    return (
-      <div id="tsSubReviewContainer">
-        <Sidebar totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length}/>
-        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
+    if (this.state.filteredComments.length) {
+      return (
+        <div id="tsSubReviewContainer">
+        <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length}/>
+        <CommentContainer comments={this.state.filteredComments} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter}/>
       </div>
-    )
+      )
+    } else {
+      return (
+        <div id="tsSubReviewContainer">
+          <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length}/>
+          <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked}/>
+        </div>
+      )
+    }
   }
 }
 

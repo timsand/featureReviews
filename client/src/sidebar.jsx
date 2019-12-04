@@ -17,39 +17,39 @@ const Sidebar = (props) => {
         <h4 id="tsCustomerTitle">Customer reviews</h4>
         <div className="tsHistogramTitle">
           <Rating name="sidebarStars" value={totalRating} readOnly={true} precision={0.1} size="medium" />
-          <span class="tsHistogramRatingOverview">{totalRating} out of 5</span>
+          <span className="tsHistogramRatingOverview">{totalRating} out of 5</span>
         </div>
         <span id="tsHistogramRatingCount">{props.totalComments} customer ratings</span>
-        <div className="tsHistogramContainer" title={`5 stars representing ${fiveStarRatings}% of rating`}>
-          <a class="tsHistogramStars">5 star</a>
+        <div className="tsHistogramContainer" title={`5 stars representing ${fiveStarRatings}% of rating`} onClick={() => {props.filterByStars(5)}}>
+          <a className="tsHistogramStars">5 star</a>
           <div className="tsHistogramBarContainer">
             <div className="tsHistogramBar" style={{ width: `${fiveStarRatings}%` }}></div>
           </div>
           <a className="tsHistogramPercents">{fiveStarRatings}%</a>
         </div>
-        <div className="tsHistogramContainer" title={`4 stars representing ${fourStarRatings}% of rating`}>
-          <a class="tsHistogramStars">4 star</a>
+        <div className="tsHistogramContainer" title={`4 stars representing ${fourStarRatings}% of rating`} onClick={() => {props.filterByStars(4)}}>
+          <a className="tsHistogramStars">4 star</a>
           <div className="tsHistogramBarContainer">
             <div className="tsHistogramBar" style={{ width: `${fourStarRatings}%` }}></div>
           </div>
           <a className="tsHistogramPercents">{fourStarRatings}%</a>
         </div>
-        <div className="tsHistogramContainer" title={`3 stars representing ${threeStarRatings}% of rating`}>
-          <a class="tsHistogramStars">3 star</a>
+        <div className="tsHistogramContainer" title={`3 stars representing ${threeStarRatings}% of rating`} onClick={() => {props.filterByStars(3)}}>
+          <a className="tsHistogramStars">3 star</a>
           <div className="tsHistogramBarContainer">
             <div className="tsHistogramBar" style={{ width: `${threeStarRatings}%` }}></div>
           </div>
           <a className="tsHistogramPercents">{threeStarRatings}%</a>
         </div>
-        <div className="tsHistogramContainer" title={`2 stars representing ${twoStarRatings}% of rating`}>
-          <a class="tsHistogramStars">2 star</a>
+        <div className="tsHistogramContainer" title={`2 stars representing ${twoStarRatings}% of rating`} onClick={() => {props.filterByStars(2)}}>
+          <a className="tsHistogramStars">2 star</a>
           <div className="tsHistogramBarContainer">
             <div className="tsHistogramBar" style={{ width: `${twoStarRatings}%` }}></div>
           </div>
           <a className="tsHistogramPercents">{twoStarRatings}%</a>
         </div>
-        <div className="tsHistogramContainer" title={`1 stars representing ${oneStarRatings}% of rating`}>
-          <a class="tsHistogramStars">1 star</a>
+        <div className="tsHistogramContainer" title={`1 stars representing ${oneStarRatings}% of rating`} onClick={() => {props.filterByStars(1)}}>
+          <a className="tsHistogramStars">1 star</a>
           <div className="tsHistogramBarContainer">
             <div className="tsHistogramBar" style={{ width: `${oneStarRatings}%` }}></div>
           </div>

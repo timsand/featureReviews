@@ -171,3 +171,14 @@ body {
   color: #555;
   font-size: 13px;
 }
+
+#tsClearFilter {
+  color: #0066c0;
+  font-size: 13px;
+}
+
+#tsClearFilter:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #c07600;
+}
