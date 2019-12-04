@@ -18,12 +18,17 @@ class App extends React.Component {
     this.writeReview = this.writeReview.bind(this);
     this.filterByStars = this.filterByStars.bind(this);
     this.clearFilter = this.clearFilter.bind(this);
+    this.sortByTop = this.sortByTop.bind(this);
   }
 
   getAllComments() {
     Axios.get('/comments')
       .then((data) => {
         var comments = data.data[0].comments;
+        //have to sort here again instead of calling sortByTop, as both functions want to setState... Could be refactored...
+        comments.sort((a, b) => {
+          return b.helpfulCount - a.helpfulCount;
+        });
         var average = data.data[0].average
         var individualRatings = data.data[0].individualRatings;
         this.setState({ comments: comments, totalRating: average, individualRatings: individualRatings })
@@ -33,6 +38,15 @@ class App extends React.Component {
   writeReview() {
     //TODO
     //Need to find a way to render this on the page, without redirects
+  }
+
+  sortByTop() {
+    const comments = this.state.comments;
+    const commentsCopy = comments.slice();
+    commentsCopy.sort((a, b) => {
+      return b.helpfulCount - a.helpfulCount;
+    })
+    this.setState({comments: commentsCopy})
   }
 
   clearFilter() {
