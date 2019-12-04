@@ -17,6 +17,7 @@ app.get('/comments', (req, res) => {
   //will be used to fetch all comments
   db.fetchAllComments()
     .then((output) => {
+      var average = computeAverage(output[0].comments)
       output = JSON.stringify(output);
       res.end(output);
     })
@@ -36,6 +37,17 @@ app.patch('/comments', (req, res) => {
     res.status(400).end();
   })
 })
+
+
+const computeAverage = (data) => {
+  var total = 0;
+  var average;
+  for (let i = 0; i < data.length; i++) {
+    total += data[i].rating;
+  }
+  average = total / data.length;
+  return average;
+}
 
 
 

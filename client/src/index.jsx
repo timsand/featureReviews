@@ -8,7 +8,8 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      comments: []
+      comments: [],
+      totalRating: 0
     };
     this.getAllComments = this.getAllComments.bind(this);
     this.helpfulClicked = this.helpfulClicked.bind(this);
@@ -19,7 +20,8 @@ class App extends React.Component {
     Axios.get('/comments')
       .then((data) => {
         var comments = data.data[0].comments;
-        this.setState({ comments: comments })
+        var average = data.data[0].average
+        this.setState({ comments: comments, totalRating: average })
       })
   }
 
@@ -52,7 +54,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="tsSubReviewContainer">
-        <Sidebar />
+        <Sidebar totalRating={this.state.totalRating}/>
         <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
       </div>
     )

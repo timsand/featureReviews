@@ -8,7 +8,7 @@ const Sidebar = (props) => {
     <div>
       <div>
         <h4>Customer reviews</h4>
-        <Rating name="sidebarStars" value={props.totalRating} readOnly={true} size="medium"/>
+        <Rating name="sidebarStars" value={props.totalRating} readOnly={true} precision={0.1} size="medium"/>
         <span>{props.totalRatings}</span>
       </div>
       <div>
