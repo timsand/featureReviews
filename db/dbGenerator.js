@@ -114,6 +114,12 @@ for (let i = 0; i < items.length; i++) {
   var itemName = items[i].name;
   var total = 0;
   var average;
+  var individualRatings = [];
+  var oneStarRatings = 0;
+  var twoStarRatings = 0;
+  var threeStarRatings = 0;
+  var fourStarRatings = 0;
+  var fiveStarRatings = 0;
   for (let x = 0; x < 30; x++) {
     let comment = {};
     let idx = Math.floor(Math.random() * listOfPeople.length)
@@ -124,6 +130,20 @@ for (let i = 0; i < items.length; i++) {
     let title = listOfTitles[idx];
     idx = Math.floor(Math.random() * ratings.length);
     let rating = ratings[idx]
+
+    //find and store number of ratings
+    if (rating === 1) {
+      oneStarRatings++;
+    } else if (rating === 2) {
+      twoStarRatings++;
+    } else if (rating === 3) {
+      threeStarRatings++;
+    } else if (rating === 4) {
+      fourStarRatings++;
+    } else {
+      fiveStarRatings++;
+    }
+
     idx = Math.floor(Math.random() * listOfDates.length)
     let date = listOfDates[idx];
     comment.id = x;
@@ -138,6 +158,12 @@ for (let i = 0; i < items.length; i++) {
     if (x === 29) {
       average = total / 30;
       items[i].average = average;
+      individualRatings.push({ oneStarRatings: oneStarRatings })
+      individualRatings.push({ twoStarRatings: twoStarRatings })
+      individualRatings.push({ threeStarRatings: threeStarRatings })
+      individualRatings.push({ fourStarRatings: fourStarRatings })
+      individualRatings.push({ fiveStarRatings: fiveStarRatings })
+      items[i].individualRatings = individualRatings;
     }
     items[i].comments.push(comment);
   }

@@ -2,7 +2,7 @@ const mongodb = require('mongodb')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 //uncomment me and add password
-const pass = 'fixMe';
+const pass = 'gammazonReview';
 
 
 // const generatedItems = require('./dbGenerator.js') //UNCOMMENT THIS FOR GENERATING A NEW DB
@@ -17,7 +17,8 @@ var reviewSchema = new Schema({
   link: Schema.Types.Mixed,
   price: Number,
   comments: Array,
-  average: Number
+  average: Number,
+  individualRatings: Array
 })
 var reviewModel = mongoose.model('reviewModel', reviewSchema, 'Reviews');
 

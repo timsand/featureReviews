@@ -9,7 +9,8 @@ class App extends React.Component {
     super()
     this.state = {
       comments: [],
-      totalRating: 0
+      totalRating: 0,
+      individualRatings: []
     };
     this.getAllComments = this.getAllComments.bind(this);
     this.helpfulClicked = this.helpfulClicked.bind(this);
@@ -21,7 +22,8 @@ class App extends React.Component {
       .then((data) => {
         var comments = data.data[0].comments;
         var average = data.data[0].average
-        this.setState({ comments: comments, totalRating: average })
+        var individualRatings = data.data[0].individualRatings;
+        this.setState({ comments: comments, totalRating: average, individualRatings: individualRatings })
       })
   }
 
@@ -54,7 +56,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="tsSubReviewContainer">
-        <Sidebar totalRating={this.state.totalRating}/>
+        <Sidebar totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length}/>
         <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
       </div>
     )
