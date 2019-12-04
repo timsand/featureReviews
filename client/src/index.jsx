@@ -4,11 +4,12 @@ import Axios from 'axios';
 import CommentContainer from './commentContainer.jsx';
 import Sidebar from './sidebar.jsx';
 
-class App extends React.Component{
+class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      comments: []
+      comments: [],
+      totalRating: 0
     };
     this.getAllComments = this.getAllComments.bind(this);
     this.helpfulClicked = this.helpfulClicked.bind(this);
@@ -17,10 +18,11 @@ class App extends React.Component{
 
   getAllComments() {
     Axios.get('/comments')
-    .then((data) => {
-      var comments = data.data[0].comments;
-      this.setState({comments: comments})
-    })
+      .then((data) => {
+        var comments = data.data[0].comments;
+        var average = data.data[0].average
+        this.setState({ comments: comments, totalRating: average })
+      })
   }
 
   writeReview() {
@@ -29,21 +31,20 @@ class App extends React.Component{
   }
 
 
-  
+
   helpfulClicked(event) {
     var id = event.target.id;
     var comments = this.state.comments;
     var itemName = comments[id].itemName;
-    console.log(itemName);
     comments[id].buttonClicked = true;
     Axios.patch('/comments', {
       id: id,
       itemName: itemName
     })
-    this.setState({comments: comments})
+    this.setState({ comments: comments })
   }
-  
-  
+
+
   componentDidMount() {
     this.getAllComments();
   }
@@ -52,12 +53,12 @@ class App extends React.Component{
 
   render() {
     return (
-      <div>
-        <Sidebar />
-        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked}/>
+      <div id="tsSubReviewContainer">
+        <Sidebar totalRating={this.state.totalRating}/>
+        <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked} />
       </div>
     )
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('reviewContainer'))
+ReactDOM.render(<App />, document.getElementById('tsReviewContainer'))

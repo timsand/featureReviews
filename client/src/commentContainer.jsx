@@ -14,6 +14,11 @@ const CommentContainer = (props) => {
         <option value="mostRecent">Most Recent</option>
       </select>
       {comments}
+      <div className="tsBottomCommentBox">
+        There is {props.comments.length} customer review and {props.numberOfRatings} customer ratings.
+      </div>
+      <a>See all customer reviews</a>
+      <button className="commentBoxSubmitReview">Write a customer review</button>
     </div>
   )
 }

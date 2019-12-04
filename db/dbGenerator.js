@@ -112,6 +112,8 @@ var items = [
 
 for (let i = 0; i < items.length; i++) {
   var itemName = items[i].name;
+  var total = 0;
+  var average;
   for (let x = 0; x < 30; x++) {
     let comment = {};
     let idx = Math.floor(Math.random() * listOfPeople.length)
@@ -132,6 +134,11 @@ for (let i = 0; i < items.length; i++) {
     comment.itemName = itemName;
     comment.helpfulCount = 0;
     comment.date = date;
+    total += rating;
+    if (x === 29) {
+      average = total / 30;
+      items[i].average = average;
+    }
     items[i].comments.push(comment);
   }
 }

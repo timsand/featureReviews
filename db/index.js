@@ -16,7 +16,8 @@ var reviewSchema = new Schema({
   name: String,
   link: Schema.Types.Mixed,
   price: Number,
-  comments: Array
+  comments: Array,
+  average: Number
 })
 var reviewModel = mongoose.model('reviewModel', reviewSchema, 'Reviews');
 
@@ -52,6 +53,8 @@ const fetchAllComments = async function() {
 //   }
 // });
 
+
+//needs to be updated to also display updated averages
 const updateReviewCount = (name, id) => {
   var updatePromise = new Promise((resolve, reject) => {
     reviewModel.collection.update({name: `${name}`}, { $inc: {[`comments.${id}.helpfulCount`]: 1} }, (err, result) => {
