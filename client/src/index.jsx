@@ -29,6 +29,9 @@ class App extends React.Component {
         comments.sort((a, b) => {
           return b.helpfulCount - a.helpfulCount;
         });
+        comments.forEach((comment) => {
+          comment.date = new Date(comment.date);
+        })
         var average = data.data[0].average
         var individualRatings = data.data[0].individualRatings;
         this.setState({ comments: comments, totalRating: average, individualRatings: individualRatings })

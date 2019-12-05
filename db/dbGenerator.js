@@ -144,8 +144,8 @@ for (let i = 0; i < items.length; i++) {
       fiveStarRatings++;
     }
 
-    idx = Math.floor(Math.random() * listOfDates.length)
-    let date = listOfDates[idx];
+    // idx = Math.floor(Math.random() * listOfDates.length)
+    // let date = listOfDates[idx];
     comment.id = x;
     comment.person = person;
     comment.title = title;
@@ -153,7 +153,7 @@ for (let i = 0; i < items.length; i++) {
     comment.rating = rating;
     comment.itemName = itemName;
     comment.helpfulCount = Math.floor((Math.random() * 10));
-    comment.date = date;
+    comment.date = new Date(+(new Date()) - Math.floor(Math.random()*10000000000));
 
     if ((Math.random() * 100) < 80) {
       comment.verified = true;

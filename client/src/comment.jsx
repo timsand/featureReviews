@@ -5,6 +5,8 @@ import BottomButtons from './BottomButtons.jsx';
 
 
 const Comment = (props) => {
+  let options = {month: 'long', day: 'numeric', year: 'numeric'};
+  let date = new Intl.DateTimeFormat('en-US', options).format(props.date);
   if (props.verified) {
     return (
       <div className='tsCommentBox'>
@@ -16,7 +18,7 @@ const Comment = (props) => {
           <Rating name="testRating" value={props.rating} readOnly={true} size="small" />
           <span className="tsReviewTitle">{props.title}</span>
         </div>
-        <h5 className="tsReviewDate">{props.date}</h5>
+        <h5 className="tsReviewDate">{date}</h5>
         <h5 className="tsVerifiedPurchase">Verified Purchase</h5>
         <p>{props.body}</p>
         <span className="tsHelpfulCount">{props.helpfulCount} people found this helpful</span>
@@ -34,7 +36,7 @@ const Comment = (props) => {
           <Rating name="testRating" value={props.rating} readOnly={true} size="small" />
           <span className="tsReviewTitle">{props.title}</span>
         </div>
-        <h5 className="tsReviewDate">{props.date}</h5>
+        <h5 className="tsReviewDate">{date}</h5>
         <p>{props.body}</p>
         <span className="tsHelpfulCount">{props.helpfulCount} people found this helpful</span>
         <BottomButtons id={props.id} helpfulClicked={props.helpfulClicked} buttonClicked={props.buttonClicked} />
