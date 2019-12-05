@@ -58,7 +58,7 @@ const Sidebar = (props) => {
       <div>
         <h5 id="tsReviewPromptTitle">Review this product</h5>
         <span style={{fontSize: '13px'}}>Share your thoughts with other customers</span>
-        <button className="sidebarSubmitReview">Write a customer review</button>
+        <button id="tsSidebarSubmitReview">Write a customer review</button>
       </div>
       <div className="tsSeperator"></div>
     </div>
