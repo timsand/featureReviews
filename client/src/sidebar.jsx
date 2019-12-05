@@ -56,6 +56,7 @@ const Sidebar = (props) => {
           <a className="tsHistogramPercents">{oneStarRatings}%</a>
         </div>
       </div>
+      <div className="tsSeperator"></div>
       <div>
         <h5>Review this product</h5>
         <span>Share your thoughts with other customers</span>

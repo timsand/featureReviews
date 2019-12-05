@@ -13,7 +13,7 @@ const CommentContainer = (props) => {
   return (
     <div>
       <span>{props.comments.length} customer reviews</span>
-      <select>
+      <select onChange={(e) => {props.handleSortChange(e)}}>
         <option value="topReviews">Top Reviews</option>
         <option value="mostRecent">Most Recent</option>
       </select>

@@ -7,6 +7,7 @@ import BottomButtons from './BottomButtons.jsx';
 const Comment = (props) => {
   let options = {month: 'long', day: 'numeric', year: 'numeric'};
   let date = new Intl.DateTimeFormat('en-US', options).format(props.date);
+
   if (props.verified) {
     return (
       <div className='tsCommentBox'>

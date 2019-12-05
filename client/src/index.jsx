@@ -19,6 +19,8 @@ class App extends React.Component {
     this.filterByStars = this.filterByStars.bind(this);
     this.clearFilter = this.clearFilter.bind(this);
     this.sortByTop = this.sortByTop.bind(this);
+    this.sortByDate = this.sortByDate.bind(this);
+    this.handleSortChange = this.handleSortChange.bind(this);
   }
 
   getAllComments() {
@@ -36,6 +38,14 @@ class App extends React.Component {
         var individualRatings = data.data[0].individualRatings;
         this.setState({ comments: comments, totalRating: average, individualRatings: individualRatings })
       })
+  }
+
+  sortByDate() {
+    const comments = this.state.comments;
+    const sortedComments = comments.slice().sort((a, b) => {
+      return b.date - a.date;
+    })
+    this.setState({comments: sortedComments})
   }
 
   writeReview() {
@@ -67,7 +77,6 @@ class App extends React.Component {
 
 
   helpfulClicked(event) {
-    console.log(event.target);
     var id = event.target.id;
     var comments = this.state.comments;
     var itemName;
@@ -89,6 +98,14 @@ class App extends React.Component {
     this.setState({ comments: comments })
   }
 
+  handleSortChange(event) {
+    if (event.target.value === 'mostRecent') {
+      this.sortByDate();
+    } else {
+      this.sortByTop();
+    }
+  }
+
 
   componentDidMount() {
     this.getAllComments();
@@ -108,7 +125,7 @@ class App extends React.Component {
       return (
         <div id="tsSubReviewContainer">
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length}/>
-          <CommentContainer comments={this.state.comments} helpfulClicked={this.helpfulClicked}/>
+          <CommentContainer handleSortChange={this.handleSortChange} comments={this.state.comments} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate}/>
         </div>
       )
     }
