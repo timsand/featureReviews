@@ -3,14 +3,12 @@ import Rating from '@material-ui/lab/Rating';
 
 
 const Sidebar = (props) => {
-  //Under span is where the graph will go..
   const oneStarRatings = props.individualRatings[0] === undefined ? 0 : (Math.floor((props.individualRatings[0].oneStarRatings / props.totalComments) * 100));
   const twoStarRatings = props.individualRatings[0] === undefined ? 0 : (Math.floor((props.individualRatings[1].twoStarRatings / props.totalComments) * 100));
   const threeStarRatings = props.individualRatings[0] === undefined ? 0 : (Math.floor((props.individualRatings[2].threeStarRatings / props.totalComments) * 100));
   const fourStarRatings = props.individualRatings[0] === undefined ? 0 : (Math.floor((props.individualRatings[3].fourStarRatings / props.totalComments) * 100));
   const fiveStarRatings = props.individualRatings[0] === undefined ? 0 : (Math.floor((props.individualRatings[4].fiveStarRatings / props.totalComments) * 100));
   const totalRating = Math.round(props.totalRating * 10) / 10;
-  // oneStarRatings = oneStarRatings * 100;
   return (
     <div>
       <div>
@@ -58,10 +56,11 @@ const Sidebar = (props) => {
       </div>
       <div className="tsSeperator"></div>
       <div>
-        <h5>Review this product</h5>
-        <span>Share your thoughts with other customers</span>
+        <h5 id="tsReviewPromptTitle">Review this product</h5>
+        <span style={{fontSize: '13px'}}>Share your thoughts with other customers</span>
         <button className="sidebarSubmitReview">Write a customer review</button>
       </div>
+      <div className="tsSeperator"></div>
     </div>
   )
 }
