@@ -2,7 +2,9 @@ const mongodb = require('mongodb')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 //uncomment me and add password
-const pass = 'testMe';
+const pass = require('../pw.js');
+
+console.log(pass);
 
 
 // const generatedItems = require('./dbGenerator.js') //UNCOMMENT THIS FOR GENERATING A NEW DB
