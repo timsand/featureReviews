@@ -152,8 +152,15 @@ for (let i = 0; i < items.length; i++) {
     comment.body = body;
     comment.rating = rating;
     comment.itemName = itemName;
-    comment.helpfulCount = 0;
+    comment.helpfulCount = Math.floor((Math.random() * 10));
     comment.date = date;
+
+    if ((Math.random() * 100) < 80) {
+      comment.verified = true;
+    } else {
+      comment.verified = false;
+    }
+
     total += rating;
     if (x === 29) {
       average = total / 30;
@@ -166,6 +173,7 @@ for (let i = 0; i < items.length; i++) {
       items[i].individualRatings = individualRatings;
     }
     items[i].comments.push(comment);
+    items[i].comments.sort((a, b) => {return b.helpfulCount - a.helpfulCount})
   }
 }
 

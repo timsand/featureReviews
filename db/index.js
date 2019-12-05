@@ -4,12 +4,10 @@ const Schema = mongoose.Schema;
 //uncomment me and add password
 const pass = require('../pw.js');
 
-console.log(pass);
-
 
 // const generatedItems = require('./dbGenerator.js') //UNCOMMENT THIS FOR GENERATING A NEW DB
 
-mongoose.connect(`mongodb+srv://gammazonReview:${pass}@gammazonreviews-iixhb.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true });
+mongoose.connect(`mongodb+srv://gammazonReview:${pass}@gammazonreviews-iixhb.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true, dbName: 'comments' });
 
 var connection = mongoose.connection;
 
@@ -46,7 +44,7 @@ const fetchAllComments = async function() {
 }
 
 
-//UNCOMMENT THE BELOW LINE TO GENERATE A NEW DB... WILL REQUIRE THE GENERATED ITEMS IMPORT TO WORK.
+// UNCOMMENT THE BELOW LINE TO GENERATE A NEW DB... WILL REQUIRE THE GENERATED ITEMS IMPORT TO WORK.
 
 // reviewModel.collection.insert(generatedItems, function (err, docs) {
 //   if (err) {

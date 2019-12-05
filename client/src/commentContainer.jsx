@@ -5,7 +5,7 @@ import { Hidden } from '@material-ui/core';
 
 const CommentContainer = (props) => {
   var comments = props.comments.map((val, i) => {
-    return <Comment id={val.id} body={val.body} date={val.date} helpfulCount={val.helpfulCount} itemName={val.itemName} person={val.person} rating={val.rating} title={val.title} key={i} helpfulClicked={props.helpfulClicked} buttonClicked={val.buttonClicked} />
+    return <Comment id={val.id} body={val.body} date={val.date} helpfulCount={val.helpfulCount} itemName={val.itemName} person={val.person} rating={val.rating} title={val.title} key={i} helpfulClicked={props.helpfulClicked} buttonClicked={val.buttonClicked}/>
   })
   return (
     <div>

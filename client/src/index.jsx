@@ -64,12 +64,23 @@ class App extends React.Component {
 
 
   helpfulClicked(event) {
+    console.log(event.target);
     var id = event.target.id;
     var comments = this.state.comments;
-    var itemName = comments[id].itemName;
-    comments[id].buttonClicked = true;
+    var itemName;
+    var index;
+
+    //bugged for db update
+    comments.forEach((comment, idx) => {
+      if (comment.id == id) {
+        index = idx;
+        itemName = comment.itemName;
+        comment.buttonClicked = true;
+      }
+    })
+    console.log(index);
     Axios.patch('/comments', {
-      id: id,
+      id: index,
       itemName: itemName
     })
     this.setState({ comments: comments })
