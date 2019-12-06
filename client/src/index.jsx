@@ -45,7 +45,7 @@ class App extends React.Component {
     const sortedComments = comments.slice().sort((a, b) => {
       return b.date - a.date;
     })
-    this.setState({comments: sortedComments})
+    this.setState({ comments: sortedComments })
   }
 
   writeReview() {
@@ -59,11 +59,11 @@ class App extends React.Component {
     commentsCopy.sort((a, b) => {
       return b.helpfulCount - a.helpfulCount;
     })
-    this.setState({comments: commentsCopy})
+    this.setState({ comments: commentsCopy })
   }
 
   clearFilter() {
-    this.setState({filteredComments: []})
+    this.setState({ filteredComments: [] })
   }
 
   filterByStars(val) {
@@ -71,7 +71,7 @@ class App extends React.Component {
     const filteredComments = comments.filter((comment) => {
       return comment.rating === val;
     })
-    this.setState({filteredComments: filteredComments})
+    this.setState({ filteredComments: filteredComments })
   }
 
 
@@ -117,15 +117,16 @@ class App extends React.Component {
     if (this.state.filteredComments.length) {
       return (
         <div id="tsSubReviewContainer">
-        <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length}/>
-        <CommentContainer comments={this.state.filteredComments} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter}/>
-      </div>
+          <button>Click me to open the modal</button>
+          <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
+          <CommentContainer comments={this.state.filteredComments} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter} />
+        </div>
       )
     } else {
       return (
         <div id="tsSubReviewContainer">
-          <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length}/>
-          <CommentContainer handleSortChange={this.handleSortChange} comments={this.state.comments} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate}/>
+          <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
+          <CommentContainer handleSortChange={this.handleSortChange} comments={this.state.comments} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
         </div>
       )
     }
