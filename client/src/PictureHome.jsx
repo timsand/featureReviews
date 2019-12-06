@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 
-const PictureMain = (props) => {
+const PictureHome = (props) => {
 
 
 
@@ -27,7 +27,8 @@ const PictureMain = (props) => {
     props.totalPictures.forEach((picture, i) => {
       pictureMain.push(
         <div className="tsPictureMainModal" key={`modalDiv${picture.id}i${i}`}>
-          <img className="tsPictureMainModalPicture" src={picture.url} commentid={picture.id} key={`modalPic${picture.id}i${i}`}></img>
+          <img className="tsPictureMainModalPicture" src={picture.url} id={picture.id} key={`modalPic${picture.id}i${i}`} onClick={(e) => {props.changePicture(e)}}>
+          </img>
         </div>
       )
     })
@@ -45,4 +46,4 @@ const PictureMain = (props) => {
 
 
 
-export default PictureMain;
+export default PictureHome;

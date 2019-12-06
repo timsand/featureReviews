@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
-import PictureMain from './PictureMain.jsx';
+import PictureHome from './PictureHome.jsx';
 
 
 class PictureModal extends React.Component {
@@ -8,10 +8,13 @@ class PictureModal extends React.Component {
     super(props)
     this.state = {
       open: false,
+      currentComment: undefined,
+      comments: this.props.comments
     }
 
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.changePicture = this.changePicture.bind(this);
   }
 
   handleOpen() {
@@ -22,19 +25,55 @@ class PictureModal extends React.Component {
     this.setState({ open: false })
   }
 
+  changePicture(event) {
+    let currentComment;
+    const id = event.target.id;
+    const comments = this.state.comments;
+    comments.forEach((comment) => {
+      if(comment.id == id) {
+        currentComment = comment;
+      }
+    })
+    this.setState({ currentComment: currentComment })
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if(props.comments.length !== state.comments.length) {
+      return {
+        comments: props.comments
+      }
+    }
+    return null;
+  }
+
   render() {
 
-    return (
-      <div>
-        <button onClick={this.handleOpen}>Set open</button>
-        <Modal open={this.state.open} onClose={this.handleClose}>
-          <div>
-            <PictureMain totalPictures={this.props.totalPictures}/>
-          </div>
-        </Modal>
-      </div>
-    )
+    if (this.state.currentComment) {
+      return (
+        <div>
+          <button onClick={this.handleOpen}>Set open</button>
+          <Modal open={this.state.open} onClose={this.handleClose}>
+            <div>
+              <PictureHome totalPictures={this.props.totalPictures} changePicture={this.changePicture} />
+            </div>
+          </Modal>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <button onClick={this.handleOpen}>Set open</button>
+          <Modal open={this.state.open} onClose={this.handleClose}>
+            <div>
+              <PictureHome totalPictures={this.props.totalPictures} changePicture={this.changePicture} />
+            </div>
+          </Modal>
+        </div>
+      )
+    }
+
   }
+
 }
 
 

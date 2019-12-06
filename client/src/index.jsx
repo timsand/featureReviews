@@ -123,7 +123,7 @@ class App extends React.Component {
           <button>Click me to open the modal</button>
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
           <div>
-            <PictureModal totalPictures={this.state.totalPictures}></PictureModal>
+            <PictureModal totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
             <CommentContainer comments={this.state.filteredComments} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter} />
           </div>
         </div>
@@ -133,7 +133,7 @@ class App extends React.Component {
         <div id="tsSubReviewContainer">
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
           <div>
-            <PictureModal totalPictures={this.state.totalPictures}></PictureModal>
+            <PictureModal totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
             <CommentContainer handleSortChange={this.handleSortChange} comments={this.state.comments} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
           </div>
         </div>
