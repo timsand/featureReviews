@@ -1,7 +1,6 @@
 const mongodb = require('mongodb')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-//uncomment me and add password
 const pass = require('../pw.js');
 
 

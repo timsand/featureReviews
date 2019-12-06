@@ -10,7 +10,7 @@ const PictureModal = (props) => {
     props.totalPictures.forEach((picture) => {
       pictureMain.push(
         <div className="tsPictureMainModal">
-          <img className="tsPictureMainModalPicture" src={picture}></img>
+          <img className="tsPictureMainModalPicture" src={picture.url} commentId={picture.id}></img>
         </div>
       )
     })

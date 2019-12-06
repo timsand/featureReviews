@@ -115,6 +115,7 @@ for (let i = 0; i < items.length; i++) {
   var total = 0;
   var average;
   var individualRatings = [];
+  var totalPictures = [];
   var oneStarRatings = 0;
   var twoStarRatings = 0;
   var threeStarRatings = 0;
@@ -152,6 +153,7 @@ for (let i = 0; i < items.length; i++) {
     comment.body = body;
     comment.rating = rating;
     comment.itemName = itemName;
+    comment.pictureArray = [];
     comment.helpfulCount = Math.floor((Math.random() * 10));
     comment.date = new Date(+(new Date()) - Math.floor(Math.random()*10000000000));
 
@@ -165,6 +167,7 @@ for (let i = 0; i < items.length; i++) {
     if (x === 29) {
       average = total / 30;
       items[i].average = average;
+      items[i].totalPictures = totalPictures;
       individualRatings.push({ oneStarRatings: oneStarRatings })
       individualRatings.push({ twoStarRatings: twoStarRatings })
       individualRatings.push({ threeStarRatings: threeStarRatings })
@@ -177,25 +180,23 @@ for (let i = 0; i < items.length; i++) {
   }
 }
 
-items[0].comments[0].pictureArray = [];
-items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-01.png');
-items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg');
-items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-03.png');
-items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/02-01.jpg');
-items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-01.jpg');
-items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-02.jpg');
-items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/04-01.jpg');
 
+const urlList = [
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-01.png', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg', 
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-03.png', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/02-01.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-02.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/04-01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/05.png',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/06.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/07.jpg'
+]
 
-
-items[0].totalPictures = [];
-items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-01.png');
-items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg');
-items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-03.png');
-items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/02-01.jpg');
-items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-01.jpg');
-items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-02.jpg');
-items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/04-01.jpg');
+urlList.forEach((url) => {
+  let info = {};
+  let idx = Math.floor(Math.random() * 30)
+  info.url = url;
+  info.id = items[0].comments[idx].id;
+  items[0].comments[idx].pictureArray.push(info);
+  items[0].totalPictures.push(info);
+});
 
 
 
