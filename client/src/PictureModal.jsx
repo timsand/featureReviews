@@ -1,55 +1,41 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
-import { makeStyles } from '@material-ui/core/styles';
+import PictureMain from './PictureMain.jsx';
 
 
-const PictureModal = (props) => {
-  //styles
-  const pictureMain = [];
-  if (props.totalPictures.length) {
-    props.totalPictures.forEach((picture) => {
-      pictureMain.push(
-        <div className="tsPictureMainModal">
-          <img className="tsPictureMainModalPicture" src={picture.url} commentId={picture.id}></img>
-        </div>
-      )
-    })
-  }
-  const useStyles = makeStyles(theme => ({
-    tsPictureModal: {
-      width: 500,
-      height: 500,
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
+class PictureModal extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      open: false,
     }
-  }))
 
-  const [open, setOpen] = React.useState(false);
-
-  const classes = useStyles();
-
-  const handleOpen = () => {
-    setOpen(true);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
-  const handleClose = () => {
-    setOpen(false);
+  handleOpen() {
+    this.setState({ open: true })
   }
 
-  return (
-    <div>
-      <button onClick={handleOpen}>Set open</button>
-      <Modal open={open} onClose={handleClose}>
-        <div className={classes.tsPictureModal}>
-          <div className="tsPictureModalContainer">
-            {pictureMain}
+  handleClose() {
+    this.setState({ open: false })
+  }
+
+  render() {
+
+    return (
+      <div>
+        <button onClick={this.handleOpen}>Set open</button>
+        <Modal open={this.state.open} onClose={this.handleClose}>
+          <div>
+            <PictureMain totalPictures={this.props.totalPictures}/>
           </div>
-        </div>
-      </Modal>
-    </div>
-  )
+        </Modal>
+      </div>
+    )
+  }
 }
+
 
 export default PictureModal;
