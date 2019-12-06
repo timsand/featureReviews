@@ -5,6 +5,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const PictureModal = (props) => {
   //styles
+  const pictureMain = [];
+  if (props.totalPictures.length) {
+    props.totalPictures.forEach((picture) => {
+      pictureMain.push(
+        <div className="tsPictureMainModal">
+          <img className="tsPictureMainModalPicture" src={picture}></img>
+        </div>
+      )
+    })
+  }
   const useStyles = makeStyles(theme => ({
     tsPictureModal: {
       width: 500,
@@ -33,9 +43,9 @@ const PictureModal = (props) => {
       <button onClick={handleOpen}>Set open</button>
       <Modal open={open} onClose={handleClose}>
         <div className={classes.tsPictureModal}>
-          <p>
-            Hello there... GENERAL KENOBI!!!!
-          </p>
+          <div className="tsPictureModalContainer">
+            {pictureMain}
+          </div>
         </div>
       </Modal>
     </div>

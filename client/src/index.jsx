@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Axios from 'axios';
 import CommentContainer from './commentContainer.jsx';
 import Sidebar from './sidebar.jsx';
+import PictureModal from './PictureModal.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -11,7 +12,8 @@ class App extends React.Component {
       comments: [],
       totalRating: 0,
       individualRatings: [],
-      filteredComments: []
+      filteredComments: [],
+      totalPictures: []
     };
     this.getAllComments = this.getAllComments.bind(this);
     this.helpfulClicked = this.helpfulClicked.bind(this);
@@ -34,9 +36,10 @@ class App extends React.Component {
         comments.forEach((comment) => {
           comment.date = new Date(comment.date);
         })
+        var totalPictures = data.data[0].totalPictures
         var average = data.data[0].average
         var individualRatings = data.data[0].individualRatings;
-        this.setState({ comments: comments, totalRating: average, individualRatings: individualRatings })
+        this.setState({ comments: comments, totalRating: average, individualRatings: individualRatings, totalPictures: totalPictures })
       })
   }
 
@@ -119,14 +122,20 @@ class App extends React.Component {
         <div id="tsSubReviewContainer">
           <button>Click me to open the modal</button>
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
-          <CommentContainer comments={this.state.filteredComments} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter} />
+          <div>
+            <PictureModal totalPictures={this.state.totalPictures}></PictureModal>
+            <CommentContainer comments={this.state.filteredComments} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter} />
+          </div>
         </div>
       )
     } else {
       return (
         <div id="tsSubReviewContainer">
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
-          <CommentContainer handleSortChange={this.handleSortChange} comments={this.state.comments} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
+          <div>
+            <PictureModal totalPictures={this.state.totalPictures}></PictureModal>
+            <CommentContainer handleSortChange={this.handleSortChange} comments={this.state.comments} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
+          </div>
         </div>
       )
     }

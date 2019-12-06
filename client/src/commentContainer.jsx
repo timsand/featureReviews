@@ -1,7 +1,6 @@
 import React from 'react';
 import Comment from './comment.jsx';
 import { Hidden } from '@material-ui/core';
-import PictureModal from './PictureModal.jsx';
 
 
 const CommentContainer = (props) => {
@@ -13,7 +12,6 @@ const CommentContainer = (props) => {
   })
   return (
     <div>
-      <PictureModal></PictureModal>
       <span>{props.comments.length} customer reviews</span>
       <select onChange={(e) => {props.handleSortChange(e)}}>
         <option value="topReviews">Top Reviews</option>

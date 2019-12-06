@@ -177,6 +177,27 @@ for (let i = 0; i < items.length; i++) {
   }
 }
 
+items[0].comments[0].pictureArray = [];
+items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-01.png');
+items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg');
+items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-03.png');
+items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/02-01.jpg');
+items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-01.jpg');
+items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-02.jpg');
+items[0].comments[0].pictureArray.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/04-01.jpg');
+
+
+
+items[0].totalPictures = [];
+items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-01.png');
+items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg');
+items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-03.png');
+items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/02-01.jpg');
+items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-01.jpg');
+items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-02.jpg');
+items[0].totalPictures.push('https://gammazon-users.s3.us-east-2.amazonaws.com/01/04-01.jpg');
+
+
 
 // reviewModel.collection.insert(items, function (err, docs) {
 //   if (err) {
