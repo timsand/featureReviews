@@ -27,7 +27,7 @@ const PictureHome = (props) => {
     props.totalPictures.forEach((picture, i) => {
       pictureMain.push(
         <div className="tsPictureMainModal" key={`modalDiv${picture.id}i${i}`}>
-          <img className="tsPictureMainModalPicture" src={picture.url} id={picture.id} key={`modalPic${picture.id}i${i}`} onClick={(e) => {props.changePicture(e)}}>
+          <img className="tsPictureMainModalPicture" src={picture.url} id={picture.id} data-pictureid={picture.pictureId} key={`modalPic${picture.id}i${i}`} onClick={(e) => {props.changePicture(e)}}>
           </img>
         </div>
       )

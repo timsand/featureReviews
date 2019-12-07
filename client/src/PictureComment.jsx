@@ -36,7 +36,7 @@ const PictureComment = (props) => {
       <div className="tsModalCommentContainer">
 
         <div className="tsModalPictureCommentBackdrop">
-          <img className="tsModalPictureComment" src={props.comment.pictureArray[0].url}></img>
+          <img className="tsModalPictureComment" src={props.currentPicture.url}></img>
         </div>
 
         <div>

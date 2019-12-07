@@ -51,8 +51,22 @@ body {
   color: #555
 }
 
-.tsTopBar {
-}
+/* .tsTopBar {
+  font-weight: 900;
+  font-size: small;
+  display: flex;
+  justify-content: space-between;
+  background: rgb(213, 213, 213);
+  background: linear-gradient(
+    0deg,
+    rgba(213, 213, 213) 0%,
+    rgba(255, 255, 255) 79%
+  );
+  width: 550px;
+  height: 20px;
+  border-bottom: 1px solid gray;
+  position: absolute;
+} */
 
 .tsCommentButton:hover {
   cursor: pointer;
@@ -244,6 +258,10 @@ body {
 .tsPictureMainModalPicture {
   height: 128px;
   width: 128px;
+}
+
+.tsPictureMainModalPicture:hover {
+  cursor: pointer;
 }
 
 .tsReviewDate {

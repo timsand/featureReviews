@@ -10,6 +10,7 @@ class PictureModal extends React.Component {
     this.state = {
       open: false,
       currentComment: undefined,
+      currentPicture: undefined,
       comments: this.props.comments,
       title: this.props.title
     }
@@ -34,15 +35,22 @@ class PictureModal extends React.Component {
 
   changePicture(event) {
     //need to write a check that checks to see if comment has multiple pictures
+    let pictureId = event.target.dataset.pictureid;
+    let currentPicture;
     let currentComment;
     const id = event.target.id;
     const comments = this.state.comments;
     comments.forEach((comment) => {
       if(comment.id == id) {
         currentComment = comment;
+        comment.pictureArray.forEach((picture) => {
+          if(picture.pictureId = pictureId) {
+            currentPicture = picture;
+          }
+        })
       }
     })
-    this.setState({ currentComment: currentComment })
+    this.setState({ currentComment: currentComment, currentPicture: currentPicture })
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -56,13 +64,13 @@ class PictureModal extends React.Component {
 
   render() {
 
-    if (this.state.currentComment) {
+    if (this.state.currentComment && this.state.currentPicture) {
       return (
         <div>
           <button onClick={this.handleOpen}>Set open</button>
           <Modal open={this.state.open} onClose={this.handleClose}>
             <div>
-              <PictureComment title={this.props.title} comment={this.state.currentComment} totalPictures={this.props.totalPictures} clearComment={this.clearComment}/>
+              <PictureComment title={this.props.title} currentPicture={this.state.currentPicture} comment={this.state.currentComment} totalPictures={this.props.totalPictures} clearComment={this.clearComment}/>
             </div>
           </Modal>
         </div>

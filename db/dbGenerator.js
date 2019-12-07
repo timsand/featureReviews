@@ -189,11 +189,15 @@ const urlList = [
   'https://gammazon-users.s3.us-east-2.amazonaws.com/01/06.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/07.jpg'
 ]
 
+let count = 0;
+
 urlList.forEach((url) => {
+  count++;
   let info = {};
   let idx = Math.floor(Math.random() * 30)
   info.url = url;
   info.id = items[0].comments[idx].id;
+  info.pictureId = count;
   items[0].comments[idx].pictureArray.push(info);
   items[0].totalPictures.push(info);
 });
