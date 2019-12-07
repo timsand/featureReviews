@@ -84,6 +84,11 @@ body {
   font-size: 12px;
 }
 
+.tsPictureModalCommentAuthor {
+  color: #555;
+  font-size: 12px;
+}
+
 .tsModalPictureCommentBackdrop {
   background-color: black;
   width: 250px;
@@ -105,6 +110,11 @@ body {
   display: flex;
   justify-content: space-between;
   overflow: auto;
+}
+
+.tsPictureModalCommentSmallImage {
+  width: 48px;
+  height: 48px;
 }
 
 .tsReportAbuseButton {

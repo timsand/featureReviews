@@ -19,6 +19,12 @@ const PictureComment = (props) => {
 
   const classes = useStyles();
 
+  let options = {month: 'long', day: 'numeric', year: 'numeric'};
+  let date = new Intl.DateTimeFormat('en-US', options).format(props.date);
+  let userImages = props.comment.pictureArray.map((picture, i) => {
+    return <img className="tsPictureModalCommentSmallImage" src={picture.url} id={picture.id} key={"smallImage" + i}></img>
+  })
+
 
   return (
     <div className={classes.tsPictureModal}>
@@ -37,8 +43,8 @@ const PictureComment = (props) => {
             <Rating name="tsPicRating" value={props.comment.rating} readOnly={true} size="small" />
             <span className="tsReviewTitle">{props.comment.title}</span>
           </div>
-          <div>
-            By author at date
+          <div className="tsPictureModalCommentAuthor">
+            <span>By {props.comment.person} on {date}</span>
           </div>
           <div>
             <span>{props.comment.body}</span>
@@ -47,7 +53,7 @@ const PictureComment = (props) => {
             Images in this review
           </div>
           <div>
-            List of images
+            {userImages}
           </div>
         
 
