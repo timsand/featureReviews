@@ -152,6 +152,10 @@ body {
   margin-right: 5px;
 }
 
+.tsPictureModalCommentSmallImage:hover {
+  cursor: pointer;
+}
+
 .tsPictureModalCommentTitle {
   font-family: Arial;
   text-overflow: ellipsis;

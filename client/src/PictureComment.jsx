@@ -22,7 +22,7 @@ const PictureComment = (props) => {
   let options = { month: 'long', day: 'numeric', year: 'numeric' };
   let date = new Intl.DateTimeFormat('en-US', options).format(props.date);
   let userImages = props.comment.pictureArray.map((picture, i) => {
-    return <img className="tsPictureModalCommentSmallImage" src={picture.url} id={picture.id} key={"smallImage" + i}></img>
+    return <img onClick={(e) => {props.changeSubImage(e)}} className="tsPictureModalCommentSmallImage" src={picture.url} id={picture.id} data-pictureid={picture.pictureId} key={"smallImage" + i}></img>
   })
 
 

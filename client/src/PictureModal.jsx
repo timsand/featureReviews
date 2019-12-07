@@ -19,6 +19,7 @@ class PictureModal extends React.Component {
     this.handleClose = this.handleClose.bind(this);
     this.changePicture = this.changePicture.bind(this);
     this.clearComment = this.clearComment.bind(this);
+    this.changeSubImage = this.changeSubImage.bind(this);
   }
 
   handleOpen() {
@@ -53,6 +54,18 @@ class PictureModal extends React.Component {
     this.setState({ currentComment: currentComment, currentPicture: currentPicture })
   }
 
+  changeSubImage(event) {
+    let pictureId = event.target.dataset.pictureid;
+    let currentComment = this.state.currentComment;
+    let currentPicture = this.state.currentPicture;
+    currentComment.pictureArray.forEach((picture) => {
+      if(picture.pictureId == pictureId) {
+        currentPicture = picture;
+      }
+    })
+    this.setState({currentPicture: currentPicture})
+  }
+
   static getDerivedStateFromProps(props, state) {
     if(props.comments.length !== state.comments.length) {
       return {
@@ -70,7 +83,7 @@ class PictureModal extends React.Component {
           <button onClick={this.handleOpen}>Set open</button>
           <Modal open={this.state.open} onClose={this.handleClose}>
             <div>
-              <PictureComment title={this.props.title} currentPicture={this.state.currentPicture} comment={this.state.currentComment} totalPictures={this.props.totalPictures} clearComment={this.clearComment}/>
+              <PictureComment changeSubImage={this.changeSubImage} title={this.props.title} currentPicture={this.state.currentPicture} comment={this.state.currentComment} totalPictures={this.props.totalPictures} clearComment={this.clearComment}/>
             </div>
           </Modal>
         </div>
