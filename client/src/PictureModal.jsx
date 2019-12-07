@@ -17,6 +17,7 @@ class PictureModal extends React.Component {
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.changePicture = this.changePicture.bind(this);
+    this.clearComment = this.clearComment.bind(this);
   }
 
   handleOpen() {
@@ -25,6 +26,10 @@ class PictureModal extends React.Component {
 
   handleClose() {
     this.setState({ open: false, currentComment: undefined })
+  }
+
+  clearComment() {
+    this.setState({currentComment: undefined})
   }
 
   changePicture(event) {
@@ -57,8 +62,7 @@ class PictureModal extends React.Component {
           <button onClick={this.handleOpen}>Set open</button>
           <Modal open={this.state.open} onClose={this.handleClose}>
             <div>
-              <PictureComment title={this.props.title} comment={this.state.currentComment} totalPictures={this.props.totalPictures} />
-              {/* <PictureHome totalPictures={this.props.totalPictures} changePicture={this.changePicture} /> */}
+              <PictureComment title={this.props.title} comment={this.state.currentComment} totalPictures={this.props.totalPictures} clearComment={this.clearComment}/>
             </div>
           </Modal>
         </div>

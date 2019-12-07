@@ -19,7 +19,7 @@ const PictureComment = (props) => {
 
   const classes = useStyles();
 
-  let options = {month: 'long', day: 'numeric', year: 'numeric'};
+  let options = { month: 'long', day: 'numeric', year: 'numeric' };
   let date = new Intl.DateTimeFormat('en-US', options).format(props.date);
   let userImages = props.comment.pictureArray.map((picture, i) => {
     return <img className="tsPictureModalCommentSmallImage" src={picture.url} id={picture.id} key={"smallImage" + i}></img>
@@ -28,8 +28,10 @@ const PictureComment = (props) => {
 
   return (
     <div className={classes.tsPictureModal}>
-      <div>
-        Image Gallery banner
+      <div className="tsTopBar"></div>
+      <div className="tsPictureModalGalleryBar">
+        <img onClick={props.clearComment} src="https://gammazon-users.s3.us-east-2.amazonaws.com/gallery.png"></img>
+        <span onClick={props.clearComment}>View Image Gallery</span>
       </div>
       <div className="tsModalCommentContainer">
 
@@ -38,7 +40,7 @@ const PictureComment = (props) => {
         </div>
 
         <div>
-          <h3>{props.title}</h3>
+          <h3 className="tsPictureModalCommentTitle">{props.title}</h3>
           <div className="tsReviewTitleContainer">
             <Rating name="tsPicRating" value={props.comment.rating} readOnly={true} size="small" />
             <span className="tsReviewTitle">{props.comment.title}</span>
@@ -46,16 +48,16 @@ const PictureComment = (props) => {
           <div className="tsPictureModalCommentAuthor">
             <span>By {props.comment.person} on {date}</span>
           </div>
-          <div>
+          <div className="tsPictureModalCommentBody">
             <span>{props.comment.body}</span>
           </div>
-          <div>
-            Images in this review
+          <div className="tsPictureModalCommentBottom">
+            <span>Images in this review</span>
+            <div>
+              {userImages}
+            </div>
           </div>
-          <div>
-            {userImages}
-          </div>
-        
+
 
         </div>
 
