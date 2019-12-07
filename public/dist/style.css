@@ -84,6 +84,29 @@ body {
   font-size: 12px;
 }
 
+.tsModalPictureCommentBackdrop {
+  background-color: black;
+  width: 250px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+.tsModalPictureComment {
+  height: 80%;
+  width: 250px;
+}
+
+.tsModalCommentContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: auto;
+}
+
 .tsReportAbuseButton {
   border: none;
   background: none;

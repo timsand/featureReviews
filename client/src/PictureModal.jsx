@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import PictureHome from './PictureHome.jsx';
+import PictureComment from './PictureComment.jsx';
 
 
 class PictureModal extends React.Component {
@@ -22,10 +23,11 @@ class PictureModal extends React.Component {
   }
 
   handleClose() {
-    this.setState({ open: false })
+    this.setState({ open: false, currentComment: undefined })
   }
 
   changePicture(event) {
+    //need to write a check that checks to see if comment has multiple pictures
     let currentComment;
     const id = event.target.id;
     const comments = this.state.comments;
@@ -54,7 +56,8 @@ class PictureModal extends React.Component {
           <button onClick={this.handleOpen}>Set open</button>
           <Modal open={this.state.open} onClose={this.handleClose}>
             <div>
-              <PictureHome totalPictures={this.props.totalPictures} changePicture={this.changePicture} />
+              <PictureComment comment={this.state.currentComment} totalPictures={this.props.totalPictures} />
+              {/* <PictureHome totalPictures={this.props.totalPictures} changePicture={this.changePicture} /> */}
             </div>
           </Modal>
         </div>
