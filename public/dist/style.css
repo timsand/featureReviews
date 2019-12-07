@@ -163,6 +163,16 @@ body {
   font-weight: normal;
 }
 
+.tsPictureModalImageEmbedded > img {
+  margin-right: 3px;
+  height: 115px;
+  width: 115px;
+}
+
+.tsPictureModalImageEmbedded > img:hover {
+  cursor: pointer;
+}
+
 .tsPictureModalGalleryBar > img {
   height: 15px;
   width: 15px;
@@ -348,4 +358,15 @@ body {
   font-weight: 700;
   font-size: 17px;
   margin-bottom: 10px;
+}
+
+#tsPictureModalAnchor {
+  color: #0066c0;
+  font-size: 13px;
+}
+
+#tsPictureModalAnchor:hover {
+  cursor: pointer;
+  color: #c45500;
+  text-decoration: underline;
 }

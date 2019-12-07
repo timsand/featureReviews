@@ -20,6 +20,7 @@ class PictureModal extends React.Component {
     this.changePicture = this.changePicture.bind(this);
     this.clearComment = this.clearComment.bind(this);
     this.changeSubImage = this.changeSubImage.bind(this);
+    this.launchSpecificPicture = this.launchSpecificPicture.bind(this);
   }
 
   handleOpen() {
@@ -54,6 +55,11 @@ class PictureModal extends React.Component {
     this.setState({ currentComment: currentComment, currentPicture: currentPicture })
   }
 
+  launchSpecificPicture(event) {
+    this.handleOpen();
+    this.changePicture(event);
+  }
+
   changeSubImage(event) {
     let pictureId = event.target.dataset.pictureid;
     let currentComment = this.state.currentComment;
@@ -76,11 +82,20 @@ class PictureModal extends React.Component {
   }
 
   render() {
+    let imageEmbedded = this.props.totalPictures.map((picture, idx) => {
+      if (idx <= 3) {
+        return <img onClick={(e)=>{this.launchSpecificPicture(e)}} src={picture.url} id={picture.id} data-pictureid={picture.pictureId} key={"embeddedImg"+ idx}></img>
+      }
+    })
 
     if (this.state.currentComment && this.state.currentPicture) {
       return (
         <div>
-          <button onClick={this.handleOpen}>Set open</button>
+          <h4>Customer Images</h4>
+          <div className="tsPictureModalImageEmbedded">
+            {imageEmbedded}
+          </div>
+          <a id="tsPictureModalAnchor" onClick={this.handleOpen}>See all customer images</a>
           <Modal open={this.state.open} onClose={this.handleClose}>
             <div>
               <PictureComment changeSubImage={this.changeSubImage} title={this.props.title} currentPicture={this.state.currentPicture} comment={this.state.currentComment} totalPictures={this.props.totalPictures} clearComment={this.clearComment}/>
@@ -91,7 +106,11 @@ class PictureModal extends React.Component {
     } else {
       return (
         <div>
-          <button onClick={this.handleOpen}>Set open</button>
+          <h4>Customer Images</h4>
+          <div className="tsPictureModalImageEmbedded">
+            {imageEmbedded}
+          </div>
+          <a id="tsPictureModalAnchor" onClick={this.handleOpen}>See all customer images</a>
           <Modal open={this.state.open} onClose={this.handleClose}>
             <div>
               <PictureHome totalPictures={this.props.totalPictures} changePicture={this.changePicture} />
