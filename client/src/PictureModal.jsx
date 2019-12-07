@@ -30,7 +30,7 @@ class PictureModal extends React.Component {
   }
 
   clearComment() {
-    this.setState({currentComment: undefined})
+    this.setState({currentComment: undefined, currentPicture: undefined})
   }
 
   changePicture(event) {
@@ -44,7 +44,7 @@ class PictureModal extends React.Component {
       if(comment.id == id) {
         currentComment = comment;
         comment.pictureArray.forEach((picture) => {
-          if(picture.pictureId = pictureId) {
+          if(picture.pictureId == pictureId) {
             currentPicture = picture;
           }
         })
