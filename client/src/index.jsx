@@ -11,6 +11,7 @@ class App extends React.Component {
     this.state = {
       comments: [],
       totalRating: 0,
+      title: '',
       individualRatings: [],
       filteredComments: [],
       totalPictures: []
@@ -29,6 +30,7 @@ class App extends React.Component {
     Axios.get('/comments')
       .then((data) => {
         var comments = data.data[0].comments;
+        var title = data.data[0].name;
         //have to sort here again instead of calling sortByTop, as both functions want to setState... Could be refactored...
         comments.sort((a, b) => {
           return b.helpfulCount - a.helpfulCount;
@@ -39,7 +41,7 @@ class App extends React.Component {
         var totalPictures = data.data[0].totalPictures
         var average = data.data[0].average
         var individualRatings = data.data[0].individualRatings;
-        this.setState({ comments: comments, totalRating: average, individualRatings: individualRatings, totalPictures: totalPictures })
+        this.setState({ comments: comments, totalRating: average, title: title, individualRatings: individualRatings, totalPictures: totalPictures })
       })
   }
 
@@ -93,7 +95,6 @@ class App extends React.Component {
         comment.buttonClicked = true;
       }
     })
-    console.log(index);
     Axios.patch('/comments', {
       id: index,
       itemName: itemName
@@ -123,7 +124,7 @@ class App extends React.Component {
           <button>Click me to open the modal</button>
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
           <div>
-            <PictureModal totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
+            <PictureModal title={this.state.title} totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
             <CommentContainer comments={this.state.filteredComments} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter} />
           </div>
         </div>
@@ -133,7 +134,7 @@ class App extends React.Component {
         <div id="tsSubReviewContainer">
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
           <div>
-            <PictureModal totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
+            <PictureModal title={this.state.title} totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
             <CommentContainer handleSortChange={this.handleSortChange} comments={this.state.comments} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
           </div>
         </div>

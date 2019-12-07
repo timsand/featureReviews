@@ -32,7 +32,7 @@ const PictureComment = (props) => {
         </div>
 
         <div>
-          <h3>Title</h3>
+          <h3>{props.title}</h3>
           <div className="tsReviewTitleContainer">
             <Rating name="tsPicRating" value={props.comment.rating} readOnly={true} size="small" />
             <span className="tsReviewTitle">{props.comment.title}</span>
