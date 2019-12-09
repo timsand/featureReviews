@@ -387,3 +387,15 @@ body {
   color: #c45500;
   text-decoration: underline;
 }
+
+#tsShowAllReviews {
+  color: #0066c0;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+#tsShowAllReviews:hover {
+  cursor: pointer;
+  color: #c45500;
+  text-decoration: underline;
+}
