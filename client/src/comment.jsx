@@ -12,7 +12,9 @@ const Comment = (props) => {
     return (
       <div className='tsCommentBox'>
         <div className="tsAvatarContainer">
-          <Avatar>?</Avatar>
+          {props.avatarUrl === null ? 
+            (<Avatar src='https://gammazon-users.s3.us-east-2.amazonaws.com/userItems/no-image-icon.png'></Avatar>) : 
+            (<Avatar src={props.avatarUrl}></Avatar>)}
           <h5>{props.person}</h5>
         </div>
         <div className="tsReviewTitleContainer">
@@ -30,7 +32,9 @@ const Comment = (props) => {
     return (
       <div className='tsCommentBox'>
         <div className="tsAvatarContainer">
-          <Avatar>?</Avatar>
+          {props.avatarUrl === null ? 
+            (<Avatar src='https://gammazon-users.s3.us-east-2.amazonaws.com/userItems/no-image-icon.png'></Avatar>) : 
+            (<Avatar src={props.avatarUrl}></Avatar>)}
           <h5>{props.person}</h5>
         </div>
         <div className="tsReviewTitleContainer">

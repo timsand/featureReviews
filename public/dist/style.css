@@ -7,8 +7,18 @@ body {
   display: flex;
 }
 
+.tsAvatarContainer h5:hover {
+  cursor: pointer;
+}
+
+.tsAvatarContainer div:hover {
+  cursor: pointer;
+}
+
 .tsAvatarContainer h5 {
   margin-left: 15px;
+  font-size: 13px;
+  font-weight: normal;
 }
 
 .tsButtonSeperator {
@@ -22,6 +32,7 @@ body {
 
 .tsBottomButtons {
   margin-top: 8px;
+  height: 50px;
 }
 
 .tsBottomButtons > button {
@@ -29,18 +40,37 @@ body {
 }
 
 .tsBottomCommentBox {
-  background-color: grey;
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
+  padding: 15px;
   font-size: 13px;
+  border-radius: 4px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .tsCommentBox {
-  margin-top: 20px;
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: normal;
 }
 
 .tsCommentBox > h5 {
   margin: 0;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.tsCommentBoxSubmitReview {
+  background-color: rgb(243, 243, 243);
+  box-shadow: inset 0 2px 8px white, inset 0 -6px 12px lightgrey;
+  height: 35px;
+  width: 160px;
+  margin-top: 20px;
+  border: solid .5px #999;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .tsCommentButton {
@@ -96,6 +126,8 @@ body {
 }
 
 .tsHelpfulSubmitted {
+  display: inline-block;
+  margin-top: 17px;
   margin-right: 12px;
   color: #007600;
   font-size: 12px;
@@ -218,13 +250,14 @@ body {
 .tsHistogramBar {
   height: 100%;
   background-image: linear-gradient(to bottom,#ffce00,#ffa700);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.05)
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.05);
+  transition: width .5s;
 }
 
 .tsHistogramBarContainer {
   background-image: linear-gradient(to bottom,#eee,#f6f6f6);
   width: 165px;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.4), inset 0 0 0 1px rgba(0,0,0,.1)
 }
 
 .tsHistogramContainer {
@@ -289,10 +322,15 @@ body {
 }
 
 .tsReviewTitle {
-  font-weight: bold;
-  font-size: 85%;
+  font-weight: 700;
   margin-left: 10px;
   margin-top: 2px;
+}
+
+.tsReviewTitle:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #c45500;
 }
 
 .tsPictureModalContainer {
@@ -313,11 +351,40 @@ body {
   font-size: 11px;
 }
 
+#tsCommentTopBarContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-bottom: -25px;
+}
+
 #tsCustomerTitle {
   font-size: 21px;
   font-weight: 400;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+#tsCommentDropDown {
+  width: 100px;
+  background-color: rgb(243, 243, 243);
+  box-shadow: inset 0 2px 8px white, inset 0 -6px 12px lightgrey;
+  margin-top: 6px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 20px;
+  text-align-last: left;
+  padding-left: 5px;
+  background-image: url('https://gammazon-users.s3.us-east-2.amazonaws.com/thickChevron.png');
+  background-size: 15px;
+  background-position: 98% center;
+	background-repeat: no-repeat;
+}
+
+#tsCommentDropDown:focus {
+  outline: none;
+  box-shadow: 1.5px 1.5px 3px #c45500, -1.5px -1.5px 3px #c45500;
 }
 
 #tsHistogramRatingCount {
@@ -369,4 +436,41 @@ body {
   cursor: pointer;
   color: #c45500;
   text-decoration: underline;
+}
+
+#tsShowAllReviews {
+  color: #0066c0;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+#tsShowAllReviews:hover {
+  cursor: pointer;
+  color: #c45500;
+  text-decoration: underline;
+}
+
+#tsSideBarContainer {
+  width: 300px;
+  margin-right: 75px;
+  margin-left: 15px;
+}
+
+#tsMasterCommentContainer {
+  width: 75%;
+}
+
+#tsPictureModalTopContainer > h4 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+#tsBottomCommentButtonsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.MuiRating-sizeSmall {
+  font-size: 1rem !important;
 }

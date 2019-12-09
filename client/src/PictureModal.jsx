@@ -90,8 +90,8 @@ class PictureModal extends React.Component {
 
     if (this.state.currentComment && this.state.currentPicture) {
       return (
-        <div>
-          <h4>Customer Images</h4>
+        <div id="tsPictureModalTopContainer">
+          <h4>Customer images</h4>
           <div className="tsPictureModalImageEmbedded">
             {imageEmbedded}
           </div>
@@ -105,8 +105,8 @@ class PictureModal extends React.Component {
       )
     } else {
       return (
-        <div>
-          <h4>Customer Images</h4>
+        <div id="tsPictureModalTopContainer">
+          <h4>Customer images</h4>
           <div className="tsPictureModalImageEmbedded">
             {imageEmbedded}
           </div>

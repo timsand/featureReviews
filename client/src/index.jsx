@@ -12,6 +12,7 @@ class App extends React.Component {
       comments: [],
       totalRating: 0,
       title: '',
+      commentNumberToDisplay: 10,
       individualRatings: [],
       filteredComments: [],
       totalPictures: []
@@ -24,6 +25,7 @@ class App extends React.Component {
     this.sortByTop = this.sortByTop.bind(this);
     this.sortByDate = this.sortByDate.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
+    this.showAllReviews = this.showAllReviews.bind(this);
   }
 
   getAllComments() {
@@ -79,6 +81,9 @@ class App extends React.Component {
     this.setState({ filteredComments: filteredComments })
   }
 
+  showAllReviews() {
+    this.setState({commentNumberToDisplay: this.state.comments.length})
+  }
 
 
   helpfulClicked(event) {
@@ -121,11 +126,10 @@ class App extends React.Component {
     if (this.state.filteredComments.length) {
       return (
         <div id="tsSubReviewContainer">
-          <button>Click me to open the modal</button>
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
           <div>
             <PictureModal title={this.state.title} totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
-            <CommentContainer comments={this.state.filteredComments} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter} />
+            <CommentContainer showAllReviews={this.showAllReviews} comments={this.state.filteredComments} commentNumberToDisplay={this.state.commentNumberToDisplay} helpfulClicked={this.helpfulClicked} clearFilter={this.clearFilter} />
           </div>
         </div>
       )
@@ -135,7 +139,7 @@ class App extends React.Component {
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
           <div>
             <PictureModal title={this.state.title} totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
-            <CommentContainer handleSortChange={this.handleSortChange} comments={this.state.comments} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
+            <CommentContainer showAllReviews={this.showAllReviews} handleSortChange={this.handleSortChange} comments={this.state.comments} commentNumberToDisplay={this.state.commentNumberToDisplay} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
           </div>
         </div>
       )

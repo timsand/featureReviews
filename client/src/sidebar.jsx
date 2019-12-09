@@ -10,7 +10,7 @@ const Sidebar = (props) => {
   const fiveStarRatings = props.individualRatings[0] === undefined ? 0 : (Math.floor((props.individualRatings[4].fiveStarRatings / props.totalComments) * 100));
   const totalRating = Math.round(props.totalRating * 10) / 10;
   return (
-    <div>
+    <div id="tsSideBarContainer">
       <div>
         <h4 id="tsCustomerTitle">Customer reviews</h4>
         <div className="tsHistogramTitle">
