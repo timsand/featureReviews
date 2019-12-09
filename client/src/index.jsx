@@ -126,7 +126,6 @@ class App extends React.Component {
     if (this.state.filteredComments.length) {
       return (
         <div id="tsSubReviewContainer">
-          <button>Click me to open the modal</button>
           <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
           <div>
             <PictureModal title={this.state.title} totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>

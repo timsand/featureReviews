@@ -12,7 +12,7 @@ const CommentContainer = (props) => {
   })
   let renderedComments = comments.splice(0, props.commentNumberToDisplay);
   return (
-    <div>
+    <div id="tsMasterCommentContainer">
       <span>{props.comments.length} customer reviews</span>
       <select onChange={(e) => {props.handleSortChange(e)}}>
         <option value="topReviews">Top Reviews</option>

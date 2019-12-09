@@ -235,7 +235,8 @@ body {
 .tsHistogramBar {
   height: 100%;
   background-image: linear-gradient(to bottom,#ffce00,#ffa700);
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.05)
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.05);
+  transition: width .5s;
 }
 
 .tsHistogramBarContainer {
@@ -403,4 +404,18 @@ body {
   cursor: pointer;
   color: #c45500;
   text-decoration: underline;
+}
+
+#tsSideBarContainer {
+  width: 300px;
+  margin-right: 75px;
+  margin-left: 15px;
+}
+
+#tsMasterCommentContainer {
+  width: 75%;
+}
+
+.MuiRating-sizeSmall {
+  font-size: 1rem !important;
 }
