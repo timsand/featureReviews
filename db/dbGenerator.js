@@ -1,4 +1,9 @@
-var listOfPeople = ['John', 'Jane', 'Doctor Pinkerton', 'Nimble Finch', 'President Ronald', 'Atkinson', 'Lea', 'Romero', 'Ziggy', 'JP'];
+var listOfPeople = [
+  ['John', 'https://gammazon-users.s3.us-east-2.amazonaws.com/userItems/user1.jpeg'], ['Jane', undefined],
+  ['Doctor Pinkerton', 'https://gammazon-users.s3.us-east-2.amazonaws.com/userItems/user2.jpeg'],
+  ['Nimble Finch', undefined], ['President Ronald', 'https://gammazon-users.s3.us-east-2.amazonaws.com/userItems/user3.jpg'], ['Atkinson', undefined],
+  ['Lea', undefined], ['Romero', undefined], ['Ziggy', undefined], ['JP', undefined]
+];
 var listOfComments = [
   'Shopping on Gamazon is so easy! This really saves me a trip into the nuclear wasteland!',
   'Complete waste of my time. I could have easily gotten this off a mutant, and it would have been in better shape.. WOULD NOT BUY AGAIN.',

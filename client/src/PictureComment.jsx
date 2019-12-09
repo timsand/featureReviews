@@ -46,7 +46,7 @@ const PictureComment = (props) => {
             <span className="tsReviewTitle">{props.comment.title}</span>
           </div>
           <div className="tsPictureModalCommentAuthor">
-            <span>By {props.comment.person} on {date}</span>
+            <span>By {props.comment.person[0]} on {date}</span>
           </div>
           <div className="tsPictureModalCommentBody">
             <span>{props.comment.body}</span>
