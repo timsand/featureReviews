@@ -7,8 +7,18 @@ body {
   display: flex;
 }
 
+.tsAvatarContainer h5:hover {
+  cursor: pointer;
+}
+
+.tsAvatarContainer div:hover {
+  cursor: pointer;
+}
+
 .tsAvatarContainer h5 {
   margin-left: 15px;
+  font-size: 13px;
+  font-weight: normal;
 }
 
 .tsButtonSeperator {
@@ -35,6 +45,8 @@ body {
 
 .tsCommentBox {
   margin-top: 20px;
+  font-size: 13px;
+  font-weight: normal;
 }
 
 .tsCommentBox > h5 {
@@ -289,10 +301,15 @@ body {
 }
 
 .tsReviewTitle {
-  font-weight: bold;
-  font-size: 85%;
+  font-weight: 700;
   margin-left: 10px;
   margin-top: 2px;
+}
+
+.tsReviewTitle:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #c45500;
 }
 
 .tsPictureModalContainer {
