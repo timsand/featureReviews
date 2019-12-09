@@ -23,7 +23,7 @@ const CommentContainer = (props) => {
       </div>
       {renderedComments}
       <div className="tsBottomCommentBox">
-        There is {props.comments.length} customer review and {props.numberOfRatings} customer ratings.
+        There are {props.comments.length} customer reviews and {props.numberOfRatings} customer ratings.
       </div>
       <a id="tsShowAllReviews" onClick={props.showAllReviews}>See all customer reviews</a>
       <button className="commentBoxSubmitReview">Write a customer review</button>
