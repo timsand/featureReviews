@@ -4,6 +4,17 @@ const path = require('path')
 const port = 8091;
 const indexPATH = path.join(__dirname, '..', 'public', 'dist')
 const db = require('../db/index.js')
+const csv = require('csv-parser');
+const fs = require('fs');
+
+// fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/server/Gammazon Products List  - PRODUCT LIST.csv')
+//   .pipe(csv())
+//   .on('data', (row) => {
+//     console.log(row);
+//   })
+//   .on('end', () => {
+//     console.log('CSV file successfully processed');
+//   });
 
 
 app.use(express.json());

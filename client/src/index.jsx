@@ -123,6 +123,22 @@ class App extends React.Component {
 
 
   render() {
+
+    return (
+
+      <div id="tsSubReviewContainer">
+        <Sidebar filterByStars={this.filterByStars} totalRating={this.state.totalRating} individualRatings={this.state.individualRatings} totalComments={this.state.comments.length} />
+        <div>
+        {this.state.filteredComments.length > 0 ? (
+          <CommentContainer showAllReviews={this.showAllReviews} handleSortChange={this.handleSortChange} comments={this.state.filteredComments} commentNumberToDisplay={this.state.commentNumberToDisplay} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
+        ) : (
+          <CommentContainer showAllReviews={this.showAllReviews} handleSortChange={this.handleSortChange} comments={this.state.comments} commentNumberToDisplay={this.state.commentNumberToDisplay} helpfulClicked={this.helpfulClicked} sortByDate={this.sortByDate} />
+        )
+        }
+        <PictureModal title={this.state.title} totalPictures={this.state.totalPictures} comments={this.state.comments}></PictureModal>
+      </div>
+    </div>
+    )
     if (this.state.filteredComments.length) {
       return (
         <div id="tsSubReviewContainer">

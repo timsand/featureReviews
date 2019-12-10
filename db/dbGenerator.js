@@ -1,3 +1,6 @@
+const csv = require('csv-parser');
+const fs = require('fs');
+
 var listOfPeople = [
   ['John', 'https://gammazon-users.s3.us-east-2.amazonaws.com/userItems/user1.jpeg'], ['Jane', undefined],
   ['Doctor Pinkerton', 'https://gammazon-users.s3.us-east-2.amazonaws.com/userItems/user2.jpeg'],
@@ -26,13 +29,243 @@ var listOfDates = [
   'June 13, 2017', 'July 8, 2019', 'December 2, 2019', 'December 2, 2019', 'December 2, 2019', 'January 14, 2016', 'August 4, 2018'
 ]
 var ratings = [1, 2, 3, 4, 5];
+// var primePantry = [{Taste: 0, Rated: 0, Total: 0}, {Nutrition: 0, Rated: 0, Total: 0}, {Price: 0, Rated: 0, Total: 0}];
+var primePantry = { Taste: { Total: 0, Rated: 0 }, Nutrition: { Total: 0, Rated: 0 }, Price: { Total: 0, Rated: 0 } };
+// var primeWardrobe = [{Fit: 0, Rated: 0, Total: 0}, {Style: 0, Rated: 0, Total: 0}, {radiationProtection: 0, Rated: 0, Total: 0}];
+var primeWardrobe = { Fit: { Total: 0, Rated: 0 }, Style: { Total: 0, Rated: 0 }, radiationProtection: { Total: 0, Rated: 0 } };
+// var health = [{Style : 0, Rated: 0, Total: 0}, {Accessibility: 0, Rated: 0, Total: 0}, {Price: 0, Rated: 0, Total: 0}];
+var health = { Style: { Total: 0, Rated: 0 }, Accessibility: { Total: 0, Rated: 0 }, Price: { Total: 0, Rated: 0 } };
+// var sports = [{Fun : 0, Rated: 0, Total: 0}, {Durability: 0, Rated: 0, Total: 0}, {Price: 0, Rated: 0, Total: 0}];
+var sports = { Fun: { Total: 0, Rated: 0 }, Durability: { Total: 0, Rated: 0 }, Price: { Total: 0, Rated: 0 } };
+
+var items = []
+fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon Products List  - PRODUCT LIST.csv')
+  .pipe(csv())
+  .on('data', (row) => {
+    items.push(row);
+  })
+  .on('end', () => {
+    console.log('CSV file successfully processed');
+
+    for (let i = 0; i < items.length; i++) {
+      var itemName = items[i].name;
+      var total = 0;
+      var average;
+      var individualRatings = [];
+      var totalPictures = [];
+      var oneStarRatings = 0;
+      var twoStarRatings = 0;
+      var threeStarRatings = 0;
+      var fourStarRatings = 0;
+      var fiveStarRatings = 0;
+      items[i].comments = [];
+      items[i].categoryRatings = [];
+      if (items[i].category === "sports & Outdoors") {
+        items[i].categoryRatings = { Fun: { Total: 0, Rated: 0, Overall: 0 }, Durability: { Total: 0, Rated: 0, Overall: 0 }, Price: { Total: 0, Rated: 0, Overall: 0 } };
+      } else if (items[i].category === "health & personal care") {
+        items[i].categoryRatings = { Style: { Total: 0, Rated: 0, Overall: 0 }, Accessibility: { Total: 0, Rated: 0, Overall: 0 }, Price: { Total: 0, Rated: 0, Overall: 0 } };
+      } else if (items[i].category === "Prime Wardrobe") {
+        items[i].categoryRatings = { Fit: { Total: 0, Rated: 0, Overall: 0 }, Style: { Total: 0, Rated: 0, Overall: 0 }, radiationProtection: { Total: 0, Rated: 0, Overall: 0 } };
+      } else {
+        items[i].categoryRatings = { Taste: { Total: 0, Rated: 0, Overall: 0 }, Nutrition: { Total: 0, Rated: 0, Overall: 0 }, Price: { Total: 0, Rated: 0, Overall: 0 } };
+      }
+      for (let x = 0; x < 30; x++) {
+        let comment = {};
+        let idx = Math.floor(Math.random() * listOfPeople.length)
+        let person = listOfPeople[idx];
+        idx = Math.floor(Math.random() * listOfComments.length);
+        let body = listOfComments[idx];
+        idx = Math.floor(Math.random() * listOfTitles.length);
+        let title = listOfTitles[idx];
+        idx = Math.floor(Math.random() * ratings.length);
+        let rating = ratings[idx]
+
+        if (items[i].category === "sports & Outdoors") {
+          let rando = Math.floor(Math.random() * 10);
+
+          if (rando !== 8) {
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Fun.Total += ratings[idx];
+            items[i].categoryRatings.Fun.Rated++;
+            items[i].categoryRatings.Fun.Overall = ((items[i].categoryRatings.Fun.Total) / (items[i].categoryRatings.Fun.Rated))
+
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Durability.Total += ratings[idx];
+            items[i].categoryRatings.Durability.Rated++;  
+            items[i].categoryRatings.Durability.Overall = ((items[i].categoryRatings.Durability.Total) / (items[i].categoryRatings.Durability.Rated))
+          }
+          if (rando !== 7) {
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Price.Total += ratings[idx];
+            items[i].categoryRatings.Price.Rated++;
+            items[i].categoryRatings.Price.Overall = ((items[i].categoryRatings.Price.Total) / (items[i].categoryRatings.Price.Rated))
+          }
+
+        } else if (items[i].category === "health & personal care") {
+          let rando = Math.floor(Math.random() * 10);
+
+          if (rando !== 8) {
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Style.Rated++;
+            items[i].categoryRatings.Style.Total += ratings[idx];
+            items[i].categoryRatings.Style.Overall = ((items[i].categoryRatings.Style.Total) / (items[i].categoryRatings.Style.Rated))
+
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Accessibility.Rated++;
+            items[i].categoryRatings.Accessibility.Total += ratings[idx];
+            items[i].categoryRatings.Accessibility.Overall = ((items[i].categoryRatings.Accessibility.Total) / (items[i].categoryRatings.Accessibility.Rated))
+          }
+
+          if (rando !== 7) {
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Price.Rated++;
+            items[i].categoryRatings.Price.Total += ratings[idx];
+            items[i].categoryRatings.Price.Overall = ((items[i].categoryRatings.Price.Total) / (items[i].categoryRatings.Price.Rated))
+          }
+        } else if (items[i].category === "Prime Wardrobe") {
+          let rando = Math.floor(Math.random() * 10);
+
+          if (rando !== 8) {
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Fit.Rated++;
+            items[i].categoryRatings.Fit.Total += ratings[idx];
+            items[i].categoryRatings.Fit.Overall = ((items[i].categoryRatings.Fit.Total) / (items[i].categoryRatings.Fit.Rated))
+
+
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Style.Rated++;
+            items[i].categoryRatings.Style.Total += ratings[idx];
+            items[i].categoryRatings.Style.Overall = ((items[i].categoryRatings.Style.Total) / (items[i].categoryRatings.Style.Rated))
+          }
+
+          if (rando !== 7) {
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.radiationProtection.Rated++;
+            items[i].categoryRatings.radiationProtection.Total += ratings[idx];
+            items[i].categoryRatings.radiationProtection.Overall = ((items[i].categoryRatings.radiationProtection.Total) / (items[i].categoryRatings.radiationProtection.Rated))
+          }
+        } else {
+          let rando = Math.floor(Math.random() * 10);
+
+          if (rando !== 8) {
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Taste.Rated++;
+            items[i].categoryRatings.Taste.Total += ratings[idx];
+            items[i].categoryRatings.Taste.Overall = ((items[i].categoryRatings.Taste.Total) / (items[i].categoryRatings.Taste.Rated))
+
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Nutrition.Rated++;
+            items[i].categoryRatings.Nutrition.Total += ratings[idx];
+            items[i].categoryRatings.Nutrition.Overall = ((items[i].categoryRatings.Nutrition.Total) / (items[i].categoryRatings.Nutrition.Rated))
+          }
+
+          if (rando !== 7) {
+            idx = Math.floor(Math.random() * ratings.length);
+            items[i].categoryRatings.Price.Rated++;
+            items[i].categoryRatings.Price.Total += ratings[idx];
+            items[i].categoryRatings.Price.Overall = ((items[i].categoryRatings.Price.Total) / (items[i].categoryRatings.Price.Rated))
+          }
+        }
+
+        //find and store number of ratings
+        if (rating === 1) {
+          oneStarRatings++;
+        } else if (rating === 2) {
+          twoStarRatings++;
+        } else if (rating === 3) {
+          threeStarRatings++;
+        } else if (rating === 4) {
+          fourStarRatings++;
+        } else {
+          fiveStarRatings++;
+        }
+
+        // idx = Math.floor(Math.random() * listOfDates.length)
+        // let date = listOfDates[idx];
+        comment.id = x;
+        comment.person = person;
+        comment.title = title;
+        comment.body = body;
+        comment.rating = rating;
+        comment.itemName = itemName;
+        comment.pictureArray = [];
+        comment.helpfulCount = Math.floor((Math.random() * 10));
+        comment.date = new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
+
+        if ((Math.random() * 100) < 80) {
+          comment.verified = true;
+        } else {
+          comment.verified = false;
+        }
+
+        total += rating;
+        if (x === 29) {
+          average = total / 30;
+          items[i].average = average;
+          items[i].totalPictures = totalPictures;
+          individualRatings.push({ oneStarRatings: oneStarRatings })
+          individualRatings.push({ twoStarRatings: twoStarRatings })
+          individualRatings.push({ threeStarRatings: threeStarRatings })
+          individualRatings.push({ fourStarRatings: fourStarRatings })
+          individualRatings.push({ fiveStarRatings: fiveStarRatings })
+          items[i].individualRatings = individualRatings;
+        }
+        items[i].comments.push(comment);
+        items[i].comments.sort((a, b) => { return b.helpfulCount - a.helpfulCount })
+      }
+    }
+
+
+    const urlList = [
+      'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-01.png', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg',
+      'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-03.png', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/02-01.jpg',
+      'https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-02.jpg',
+      'https://gammazon-users.s3.us-east-2.amazonaws.com/01/04-01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/05.png',
+      'https://gammazon-users.s3.us-east-2.amazonaws.com/01/06.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/07.jpg'
+    ]
+
+    let count = 0;
+
+    urlList.forEach((url) => {
+      count++;
+      let info = {};
+      let idx = Math.floor(Math.random() * 30)
+      info.url = url;
+      info.id = items[0].comments[idx].id;
+      info.pictureId = count;
+      items[0].comments[idx].pictureArray.push(info);
+      items[0].totalPictures.push(info);
+    });
 
 
 
 
 
 
-var items = [
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  });
+
+
+
+
+
+var items2 = [
   {
     id: 1,
     name: 'Bottled Water',
@@ -110,102 +343,10 @@ var items = [
     link: 'https://www.amazon.com/Amazon-Brand-Isopropyl-Antiseptic-Technical/dp/B07NFSFBXQ/ref=sr_1_4?keywords=rubbing+alcohol&qid=1574888298&s=hpc&sr=1-4',
     price: 3.05,
     comments: []
-
   }
 ]
 
 
-for (let i = 0; i < items.length; i++) {
-  var itemName = items[i].name;
-  var total = 0;
-  var average;
-  var individualRatings = [];
-  var totalPictures = [];
-  var oneStarRatings = 0;
-  var twoStarRatings = 0;
-  var threeStarRatings = 0;
-  var fourStarRatings = 0;
-  var fiveStarRatings = 0;
-  for (let x = 0; x < 30; x++) {
-    let comment = {};
-    let idx = Math.floor(Math.random() * listOfPeople.length)
-    let person = listOfPeople[idx];
-    idx = Math.floor(Math.random() * listOfComments.length);
-    let body = listOfComments[idx];
-    idx = Math.floor(Math.random() * listOfTitles.length);
-    let title = listOfTitles[idx];
-    idx = Math.floor(Math.random() * ratings.length);
-    let rating = ratings[idx]
-
-    //find and store number of ratings
-    if (rating === 1) {
-      oneStarRatings++;
-    } else if (rating === 2) {
-      twoStarRatings++;
-    } else if (rating === 3) {
-      threeStarRatings++;
-    } else if (rating === 4) {
-      fourStarRatings++;
-    } else {
-      fiveStarRatings++;
-    }
-
-    // idx = Math.floor(Math.random() * listOfDates.length)
-    // let date = listOfDates[idx];
-    comment.id = x;
-    comment.person = person;
-    comment.title = title;
-    comment.body = body;
-    comment.rating = rating;
-    comment.itemName = itemName;
-    comment.pictureArray = [];
-    comment.helpfulCount = Math.floor((Math.random() * 10));
-    comment.date = new Date(+(new Date()) - Math.floor(Math.random()*10000000000));
-
-    if ((Math.random() * 100) < 80) {
-      comment.verified = true;
-    } else {
-      comment.verified = false;
-    }
-
-    total += rating;
-    if (x === 29) {
-      average = total / 30;
-      items[i].average = average;
-      items[i].totalPictures = totalPictures;
-      individualRatings.push({ oneStarRatings: oneStarRatings })
-      individualRatings.push({ twoStarRatings: twoStarRatings })
-      individualRatings.push({ threeStarRatings: threeStarRatings })
-      individualRatings.push({ fourStarRatings: fourStarRatings })
-      individualRatings.push({ fiveStarRatings: fiveStarRatings })
-      items[i].individualRatings = individualRatings;
-    }
-    items[i].comments.push(comment);
-    items[i].comments.sort((a, b) => {return b.helpfulCount - a.helpfulCount})
-  }
-}
-
-
-const urlList = [
-  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-01.png', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg', 
-  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-03.png', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/02-01.jpg',
-  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-02.jpg',
-  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/04-01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/05.png',
-  'https://gammazon-users.s3.us-east-2.amazonaws.com/01/06.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/07.jpg'
-]
-
-let count = 0;
-
-urlList.forEach((url) => {
-  count++;
-  let info = {};
-  let idx = Math.floor(Math.random() * 30)
-  info.url = url;
-  info.id = items[0].comments[idx].id;
-  info.pictureId = count;
-  items[0].comments[idx].pictureArray.push(info);
-  items[0].totalPictures.push(info);
-});
 
 
 
