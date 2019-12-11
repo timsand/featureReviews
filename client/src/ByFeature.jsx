@@ -16,7 +16,7 @@ const ByFeature = (props) => {
     mappedCategories = Object.keys(props.categoryRatings).map(function(key, index) {
       return (
         <div key={'div' + index}>
-          <span key={'span1' + index}>{key}</span>
+          <span className="tsSideBarSubtitle" key={'span1' + index}>{key}</span>
           <Rating name={key} value={props.categoryRatings[key].Overall} readOnly={true} precision={0.2} size="small" key={key}/>
           <span>{(props.categoryRatings[key].Overall).toFixed(1)}</span>
         </div>

@@ -10,7 +10,7 @@ const ByInterests = (props) => {
     <div>
       <h3>By customer groups and interests</h3>
       <div>
-        <span>Survival</span>
+        <span className="tsSideBarSubtitle">Survival</span>
         <Rating name="survival" precision={0.2} value={4.5} readOnly={true} size="small"/>
         <span>4.5</span>
       </div>
@@ -20,7 +20,7 @@ const ByInterests = (props) => {
         <span>4.3</span>
       </div>
       <div>
-        <span>Is this feature helpful?</span>
+        <span className="tsSideBarSubtitle">Is this feature helpful?</span>
         <button>Yes</button>
         <button>No</button>
       </div>
