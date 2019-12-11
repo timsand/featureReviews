@@ -1,5 +1,6 @@
 import React from 'react';
 import Rating from '@material-ui/lab/Rating';
+import ByFeature from './ByFeature.jsx';
 
 
 const Sidebar = (props) => {
@@ -55,6 +56,7 @@ const Sidebar = (props) => {
         </div>
       </div>
       <div className="tsSeperator"></div>
+      <ByFeature categoryRatings={props.categoryRatings}/>
       <div>
         <h5 id="tsReviewPromptTitle">Review this product</h5>
         <span style={{fontSize: '13px'}}>Share your thoughts with other customers</span>
