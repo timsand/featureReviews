@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   getAllComments() {
-    Axios.get('/comments')
+    Axios.get('comments', {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
       .then((data) => {
         var comments = data.data[0].comments;
         var title = data.data[0].name;
@@ -109,10 +109,10 @@ class App extends React.Component {
         comment.buttonClicked = true;
       }
     })
-    Axios.patch('/comments', {
+    Axios.patch('comments', {
       id: index,
       itemName: itemName
-    })
+    }, {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
     this.setState({ comments: comments })
   }
 

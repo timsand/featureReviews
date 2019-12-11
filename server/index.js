@@ -6,15 +6,12 @@ const indexPATH = path.join(__dirname, '..', 'public', 'dist')
 const db = require('../db/index.js')
 const csv = require('csv-parser');
 const fs = require('fs');
+let bundleFile = path.join(__dirname, '..', 'public', 'dist', 'bundle.js');
+let cssFile = path.join(__dirname, '..', 'public', 'dist', 'style.css');
+const cors = require('cors');
 
-// fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/server/Gammazon Products List  - PRODUCT LIST.csv')
-//   .pipe(csv())
-//   .on('data', (row) => {
-//     console.log(row);
-//   })
-//   .on('end', () => {
-//     console.log('CSV file successfully processed');
-//   });
+app.use(cors());
+
 
 
 app.use(express.json());
@@ -22,9 +19,13 @@ app.use(express.json());
 
 app.use(express.static(indexPATH))
 
-
+app.use('/bundle.js', express.static(bundleFile))
+app.get('/stylesheet', (req, res) => {
+  res.sendFile(cssFile)
+})
 
 app.get('/comments', (req, res) => {
+
   //will be used to fetch all comments
   db.fetchAllComments()
     .then((output) => {
