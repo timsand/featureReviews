@@ -58,7 +58,7 @@ const Sidebar = (props) => {
       </div>
       <div className="tsSeperator"></div>
       <ByFeature categoryRatings={props.categoryRatings}/>
-      <ByInterests />
+      <ByInterests featureHelpfulClicked={props.featureHelpfulClicked} sidebarHelpfulClicked={props.sidebarHelpfulClicked}/>
       <div>
         <h5 id="tsReviewPromptTitle">Review this product</h5>
         <span style={{fontSize: '13px'}}>Share your thoughts with other customers</span>

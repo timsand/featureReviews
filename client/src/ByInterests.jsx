@@ -23,13 +23,27 @@ const ByInterests = (props) => {
           <span className="tsSideBarTextRating">4.3</span>
         </div>
       </div>
-      <div className="tsInterestSubContainer">
+      {props.featureHelpfulClicked === false ? (
+      <div id="tsInterestSubContainerEnd">
+        <span id="tsFeatureHelpfulQ">Is this feature helpful?</span>
+        <div>
+          <button className="tsInterestsButton" onClick={props.sidebarHelpfulClicked}>Yes</button>
+          <button className="tsInterestsButton" onClick={props.sidebarHelpfulClicked}>No</button>
+        </div>
+      </div>
+    ) : (
+    <div>
+      <span className="tsHelpfulSubmitted">√</span>
+      <span className="tsHelpfulSubmitted">Thank you for your feedback.</span>
+    </div>
+    )}
+      {/* <div id="tsInterestSubContainerEnd">
         <span id="tsFeatureHelpfulQ">Is this feature helpful?</span>
         <div>
           <button className="tsInterestsButton">Yes</button>
           <button className="tsInterestsButton">No</button>
         </div>
-      </div>
+      </div> */}
       <div className="tsSeperator"></div>
     </div>
   )

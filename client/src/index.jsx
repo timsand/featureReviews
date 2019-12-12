@@ -12,6 +12,7 @@ class App extends React.Component {
       comments: [],
       totalRating: 0,
       title: '',
+      featureHelpfulClicked: false,
       commentNumberToDisplay: 10,
       categoryRatings: undefined,
       individualRatings: [],
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.sortByDate = this.sortByDate.bind(this);
     this.handleSortChange = this.handleSortChange.bind(this);
     this.showAllReviews = this.showAllReviews.bind(this);
+    this.sidebarHelpfulClicked = this.sidebarHelpfulClicked.bind(this);
   }
 
   getAllComments() {
@@ -94,6 +96,10 @@ class App extends React.Component {
     this.setState({commentNumberToDisplay: this.state.comments.length})
   }
 
+  sidebarHelpfulClicked() {
+    this.setState({featureHelpfulClicked: true});
+  }
+
 
   helpfulClicked(event) {
     var id = event.target.id;
@@ -137,7 +143,9 @@ class App extends React.Component {
 
       <div id="tsSubReviewContainer">
         <Sidebar 
-          filterByStars={this.filterByStars} 
+          filterByStars={this.filterByStars}
+          featureHelpfulClicked={this.state.featureHelpfulClicked}
+          sidebarHelpfulClicked={this.sidebarHelpfulClicked}
           totalRating={this.state.totalRating} 
           individualRatings={this.state.individualRatings} 
           totalComments={this.state.comments.length}
