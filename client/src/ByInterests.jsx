@@ -8,21 +8,27 @@ const ByInterests = (props) => {
 
   return (
     <div>
-      <h3>By customer groups and interests</h3>
-      <div>
+      <h3 className="tsSideBarHeader">By customer groups and interests</h3>
+      <div className="tsInterestSubContainer">
         <span className="tsSideBarSubtitle">Survival</span>
-        <Rating name="survival" precision={0.2} value={4.5} readOnly={true} size="small"/>
-        <span>4.5</span>
+        <div>
+          <Rating name="survival" precision={0.2} value={4.5} readOnly={true} size="small"/>
+          <span className="tsSideBarTextRating">4.5</span>
+        </div>
       </div>
-      <div>
-        <span>Scavenging</span>
-        <Rating name="scavenging" precision={0.2} value={4.3} readOnly={true} size="small"/>
-        <span>4.3</span>
+      <div className="tsInterestSubContainer">
+        <span className="tsSideBarSubtitle">Scavenging</span>
+        <div>
+          <Rating name="scavenging" precision={0.2} value={4.3} readOnly={true} size="small"/>
+          <span className="tsSideBarTextRating">4.3</span>
+        </div>
       </div>
-      <div>
-        <span className="tsSideBarSubtitle">Is this feature helpful?</span>
-        <button>Yes</button>
-        <button>No</button>
+      <div className="tsInterestSubContainer">
+        <span id="tsFeatureHelpfulQ">Is this feature helpful?</span>
+        <div>
+          <button className="tsInterestsButton">Yes</button>
+          <button className="tsInterestsButton">No</button>
+        </div>
       </div>
       <div className="tsSeperator"></div>
     </div>
