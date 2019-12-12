@@ -321,10 +321,26 @@ body {
   display: flex;
 }
 
-.tsReviewTitle {
+.tsReviewTitleModal {
+  font-size: 13px;
   font-weight: 700;
   margin-left: 10px;
-  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.tsReviewTitle {
+  display: inline-block;
+  font-weight: 700;
+  margin-left: 10px;
+  margin-bottom: 2px;
+}
+
+.tsReportAbuseButtonInModal {
+  background: linear-gradient( 0deg, rgba(233, 187, 36, 0.936) 0%, rgba(255, 228, 138, 0.936) 79% );
+  border-color: #a88734 #9c7e31 #846a29;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .tsReviewTitle:hover {
@@ -401,7 +417,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 25px;
-  margin-bottom: -25px;
+  margin-bottom: -5px;
 }
 
 #tsCustomerTitle {

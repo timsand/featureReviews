@@ -11,8 +11,11 @@ const PictureHome = (props) => {
 
   const useStyles = makeStyles(theme => ({
     tsPictureModal: {
+      position: 'absolute',
       width: 500,
       height: 500,
+      bottom: '25%',
+      right: '50%',
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],

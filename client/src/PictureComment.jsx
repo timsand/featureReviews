@@ -8,8 +8,11 @@ const PictureComment = (props) => {
 
   const useStyles = makeStyles(theme => ({
     tsPictureModal: {
+      position: 'absolute',
       width: 500,
       height: 500,
+      bottom: '25%',
+      right: '50%',
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
@@ -42,8 +45,10 @@ const PictureComment = (props) => {
         <div>
           <h3 className="tsPictureModalCommentTitle">{props.title}</h3>
           <div className="tsReviewTitleContainer">
-            <Rating name="tsPicRating" value={props.comment.rating} readOnly={true} size="small" />
-            <span className="tsReviewTitle">{props.comment.title}</span>
+            <div>
+              <Rating name="tsPicRating" value={props.comment.rating} readOnly={true} size="small" />
+              <span className="tsReviewTitleModal">{props.comment.title}</span>
+            </div>
           </div>
           <div className="tsPictureModalCommentAuthor">
             <span>By {props.comment.person[0]} on {date}</span>
