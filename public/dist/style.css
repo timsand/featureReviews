@@ -408,6 +408,14 @@ body {
   margin-top: 20px;
 }
 
+.tsBigSeperator {
+  display: block;
+  margin-right: 0px;
+  flex-direction: column;
+  border-top: 1px solid #e7e7e7;
+  margin-top: 20px;
+}
+
 .tsVerifiedPurchase {
   color: #c45500;
   font-size: 11px;

@@ -142,43 +142,50 @@ class App extends React.Component {
 
     return (
 
-      <div id="tsSubReviewContainer">
-        <Sidebar 
-          filterByStars={this.filterByStars}
-          featureHelpfulClicked={this.state.featureHelpfulClicked}
-          sidebarHelpfulClicked={this.sidebarHelpfulClicked}
-          totalRating={this.state.totalRating} 
-          individualRatings={this.state.individualRatings} 
-          totalComments={this.state.comments.length}
-          categoryRatings={this.state.categoryRatings} 
-        />
-        <div>
-        <PictureModal 
-          title={this.state.title} 
-          totalPictures={this.state.totalPictures} 
-          comments={this.state.comments} 
-        />
-        {this.state.filteredComments.length ? (
-          <CommentContainer 
-            showAllReviews={this.showAllReviews} 
-            comments={this.state.filteredComments} 
-            commentNumberToDisplay={this.state.commentNumberToDisplay} 
-            helpfulClicked={this.helpfulClicked} 
-            clearFilter={this.clearFilter} 
+
+      <div>
+        <div className="tsBigSeperator"></div>
+        <div id="tsSubReviewContainer">
+          <Sidebar 
+            filterByStars={this.filterByStars}
+            featureHelpfulClicked={this.state.featureHelpfulClicked}
+            sidebarHelpfulClicked={this.sidebarHelpfulClicked}
+            totalRating={this.state.totalRating} 
+            individualRatings={this.state.individualRatings} 
+            totalComments={this.state.comments.length}
+            categoryRatings={this.state.categoryRatings} 
           />
-        ) : (
-          <CommentContainer 
-            showAllReviews={this.showAllReviews} 
-            handleSortChange={this.handleSortChange} 
+          <div>
+          <PictureModal 
+            title={this.state.title} 
+            totalPictures={this.state.totalPictures} 
             comments={this.state.comments} 
-            commentNumberToDisplay={this.state.commentNumberToDisplay} 
-            helpfulClicked={this.helpfulClicked} 
-            sortByDate={this.sortByDate} 
           />
-        )
-        }
+          {this.state.filteredComments.length ? (
+            <CommentContainer 
+              showAllReviews={this.showAllReviews} 
+              comments={this.state.filteredComments} 
+              commentNumberToDisplay={this.state.commentNumberToDisplay} 
+              helpfulClicked={this.helpfulClicked} 
+              clearFilter={this.clearFilter} 
+            />
+          ) : (
+            <CommentContainer 
+              showAllReviews={this.showAllReviews} 
+              handleSortChange={this.handleSortChange} 
+              comments={this.state.comments} 
+              commentNumberToDisplay={this.state.commentNumberToDisplay} 
+              helpfulClicked={this.helpfulClicked} 
+              sortByDate={this.sortByDate} 
+            />
+          )
+          }
+        </div>
       </div>
+      <div className="tsBigSeperator"></div>
+
     </div>
+
     )
   }
 }
