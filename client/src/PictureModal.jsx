@@ -87,6 +87,8 @@ class PictureModal extends React.Component {
         return <img onClick={(e)=>{this.launchSpecificPicture(e)}} src={picture.url} id={picture.id} data-pictureid={picture.pictureId} key={"embeddedImg"+ idx}></img>
       }
     })
+    console.log(this.props.totalPictures);
+    console.log(imageEmbedded);
 
     if (this.state.currentComment && this.state.currentPicture) {
       return (

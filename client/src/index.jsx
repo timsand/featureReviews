@@ -31,8 +31,9 @@ class App extends React.Component {
     this.sidebarHelpfulClicked = this.sidebarHelpfulClicked.bind(this);
   }
 
+
   getAllComments() {
-    Axios.get('comments', {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
+    Axios.get('comments/1', {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
       .then((data) => {
         var comments = data.data[0].comments;
         var title = data.data[0].name;

@@ -1,9 +1,6 @@
-const mongodb = require('mongodb')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const pass = require('../pw.js');
-
-console.log(pass);
 
 
 // const generatedItems = require('./dbGenerator.js') //UNCOMMENT THIS FOR GENERATING A NEW DB
@@ -13,11 +10,14 @@ mongoose.connect(`mongodb+srv://gammazonReview:${pass}@gammazonreviews-iixhb.mon
 var connection = mongoose.connection;
 
 var reviewSchema = new Schema({
-  id: {type: Number, unique: true},
+  id: {type: String, unique: true},
   name: String,
   link: Schema.Types.Mixed,
   price: Number,
+  category: String,
   comments: Array,
+  categoryRatings: Object,
+  totalPictures: Array,
   average: Number,
   individualRatings: Array
 })
@@ -56,6 +56,20 @@ const fetchAllComments = async function() {
 // });
 
 
+const fetchSpecificComment = async function(id) {
+  var querySpecificPromise = new Promise((resolve, reject) => {
+    reviewModel.find({id: `${id}`}, null, (err, result) => {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  })
+  return querySpecificPromise;
+}
+
+
 //needs to be updated to also display updated averages
 const updateReviewCount = (name, id) => {
   var updatePromise = new Promise((resolve, reject) => {
@@ -78,3 +92,4 @@ const updateReviewCount = (name, id) => {
 module.exports.connection = connection;
 module.exports.fetchAllComments = fetchAllComments;
 module.exports.updateReviewCount = updateReviewCount;
+module.exports.fetchSpecificComment = fetchSpecificComment;

@@ -3,7 +3,6 @@ import Rating from '@material-ui/lab/Rating'
 
 
 const ByFeature = (props) => {
-  console.log(props);
   let mappedCategories;
 
   if (props.categoryRatings) {
