@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-      "Name": "timsand/gammazonreviews:1.111"
+      "Name": "timsand/gammazonreviews:modal1.0"
   },
   "Ports": [
       {"ContainerPort": "8091"}
