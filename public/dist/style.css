@@ -282,7 +282,6 @@ body {
 
 .tsHistogramTitle {
   display: flex;
-  margin-bottom: 25px;
 }
 
 .tsHistogramPercents {
@@ -430,7 +429,7 @@ body {
 
 #tsCustomerTitle {
   font-size: 21px;
-  font-weight: 400;
+  font-weight: 700;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -458,6 +457,9 @@ body {
 }
 
 #tsHistogramRatingCount {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 20px;
   color: #555;
   font-size: 13px;
 }
@@ -522,7 +524,7 @@ body {
 
 #tsSideBarContainer {
   width: 300px;
-  margin-right: 75px;
+  margin-right: 150px;
   margin-left: 15px;
 }
 

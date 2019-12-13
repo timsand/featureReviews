@@ -7,7 +7,7 @@ const CommentContainer = (props) => {
   let comments = props.comments.map((val, i) => {
     return <Comment
       id={val.id} body={val.body} date={val.date} helpfulCount={val.helpfulCount} itemName={val.itemName} person={val.person[0]} rating={val.rating}
-      title={val.title} key={i} helpfulClicked={props.helpfulClicked} buttonClicked={val.buttonClicked} avatarUrl={val.person[1]} verified={val.verified}>
+      title={val.title} key={i} helpfulClicked={props.helpfulClicked} buttonClicked={val.buttonClicked} avatarUrl={val.person[1]} verified={val.verified} writeReview={props.writeReview}>
     </Comment>
   })
   let renderedComments = comments.splice(0, props.commentNumberToDisplay);

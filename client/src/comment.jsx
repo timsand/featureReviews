@@ -25,7 +25,7 @@ const Comment = (props) => {
         <h5 className="tsVerifiedPurchase">Verified Purchase</h5>
         <p>{props.body}</p>
         <span className="tsHelpfulCount">{props.helpfulCount} people found this helpful</span>
-        <BottomButtons id={props.id} helpfulClicked={props.helpfulClicked} buttonClicked={props.buttonClicked} />
+        <BottomButtons id={props.id} helpfulClicked={props.helpfulClicked} buttonClicked={props.buttonClicked} writeReview={props.writeReview}/>
       </div>
     )
   } else {

@@ -68,8 +68,7 @@ class App extends React.Component {
   }
 
   writeReview() {
-    //TODO
-    //Need to find a way to render this on the page, without redirects
+    alert('This would have redirected you to the Gammazon reviews page!')
   }
 
   sortByTop() {
@@ -154,13 +153,16 @@ class App extends React.Component {
             individualRatings={this.state.individualRatings} 
             totalComments={this.state.comments.length}
             categoryRatings={this.state.categoryRatings} 
+            writeReview={this.writeReview}
           />
           <div>
-          <PictureModal 
-            title={this.state.title} 
-            totalPictures={this.state.totalPictures} 
-            comments={this.state.comments} 
-          />
+          {this.state.totalPictures.length ? (
+            <PictureModal 
+              title={this.state.title} 
+              totalPictures={this.state.totalPictures} 
+              comments={this.state.comments} 
+            />
+          ) : (null)}
           {this.state.filteredComments.length ? (
             <CommentContainer 
               showAllReviews={this.showAllReviews} 
@@ -168,6 +170,7 @@ class App extends React.Component {
               commentNumberToDisplay={this.state.commentNumberToDisplay} 
               helpfulClicked={this.helpfulClicked} 
               clearFilter={this.clearFilter} 
+              writeReview={this.writeReview}
             />
           ) : (
             <CommentContainer 
@@ -177,6 +180,7 @@ class App extends React.Component {
               commentNumberToDisplay={this.state.commentNumberToDisplay} 
               helpfulClicked={this.helpfulClicked} 
               sortByDate={this.sortByDate} 
+              writeReview={this.writeReview}
             />
           )
           }
