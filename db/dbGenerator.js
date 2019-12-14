@@ -15,7 +15,8 @@ var listOfComments = [
   'Overpriced, but I really needed this. Oh well.',
   'Mixed feelings on this one...',
   'SO many bottlecaps, but totally worth it!',
-  'How are we all even talking to each other?'
+  'How are we all even talking to each other?',
+  `I absolutely CANNOT believe that I bought this product. I am SO upset, and am going to spend the next several lines of text letting you know JUST how UPSET I am! You may be wondering, does this benefit me at all? Does writing this review do anything other than make me feel better. NOPE! But I am going to let you know about my anger all the same!!! To be honest, I don't event know what I was so mad about. Gammmazon is a super cool site, and all of their products are great. But I had one product that displeased me, and now you all will feel my wrath. My rage burns with the intensity of a thousand suns. Ok, I'm done now. JUST KIDDING, I AM NOT EVEN CLOSE TO BEING FINISHED! After writing this review and reseeding the database, I now realize that this comment isn't NEARLY close enough for you all to feel my anger. I'm just going to write RANDOM THINGS FOR EVEN LONGER. Try and stop me, you cannot! For I am the all powerful angry reviewer, and nothing can stop my power!!! Perhaps I should have used a random text generator for this, but it's really too late now. I am fully commited. The text must continue. It must never end. It must reach the mystical read more link. I cannot stop until this is completed.`
 ];
 var listOfTitles = [
   'Too good to be true!',
