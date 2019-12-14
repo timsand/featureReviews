@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-      "Name": "timsand/gammazonreviews:product1.1"
+      "Name": "timsand/gammazonreviews:productInformation2.0"
   },
   "Ports": [
       {"ContainerPort": "8091"}
