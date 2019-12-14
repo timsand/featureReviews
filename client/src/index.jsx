@@ -4,6 +4,7 @@ import Axios from 'axios';
 import CommentContainer from './commentContainer.jsx';
 import Sidebar from './sidebar.jsx';
 import PictureModal from './PictureModal.jsx';
+import ProductInformation from './ProductInformation.jsx';
 
 class App extends React.Component {
   constructor() {
@@ -12,6 +13,11 @@ class App extends React.Component {
       comments: [],
       totalRating: 0,
       title: '',
+      disclaimer: undefined,
+      directions: undefined,
+      foodIngredients: undefined,
+      safetyWarning: undefined,
+      category: undefined,
       featureHelpfulClicked: false,
       commentNumberToDisplay: 10,
       categoryRatings: undefined,
@@ -33,11 +39,17 @@ class App extends React.Component {
 
 
   getAllComments() {
-    Axios.get('comments/1', {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
+    Axios.get('comments/8', {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
       .then((data) => {
+        console.log(data);
         var comments = data.data[0].comments;
         var title = data.data[0].name;
         var categoryRatings = data.data[0].categoryRatings
+        var category = data.data[0].category;
+        var disclaimer = data.data[0].disclaimerText;
+        var directions = data.data[0].directions;
+        var foodIngredients = data.data[0].foodIngredients;
+        var safetyWarning = data.data[0].safetyWarning;
         //have to sort here again instead of calling sortByTop, as both functions want to setState... Could be refactored...
         comments.sort((a, b) => {
           return b.helpfulCount - a.helpfulCount;
@@ -49,7 +61,12 @@ class App extends React.Component {
         var average = data.data[0].average
         var individualRatings = data.data[0].individualRatings;
         this.setState({ 
+          disclaimer: disclaimer,
+          directions: directions,
+          foodIngredients: foodIngredients,
+          safetyWarning: safetyWarning,
           comments: comments, 
+          category: category,
           totalRating: average, 
           title: title, 
           categoryRatings: categoryRatings,
@@ -143,6 +160,14 @@ class App extends React.Component {
 
 
       <div>
+        <div className="tsBigSeperator"></div>
+        <ProductInformation 
+          category={this.state.category}
+          disclaimer={this.state.disclaimer}
+          directions={this.state.directions}
+          foodIngredients={this.state.foodIngredients}
+          safetyWarning={this.state.safetyWarning}
+        />
         <div className="tsBigSeperator"></div>
         <div id="tsSubReviewContainer">
           <Sidebar 

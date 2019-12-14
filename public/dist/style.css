@@ -1,5 +1,5 @@
 body {
-  font-family: 'Amazon Ember', Arial, sans-serif;
+  font-family: 'PT Sans', 'Amazon Ember', Arial, sans-serif;
 }
 
 
@@ -71,6 +71,7 @@ body {
   border-radius: 3px;
   font-weight: 500;
   font-size: 12px;
+  cursor: pointer;
 }
 
 .tsCommentButton {
@@ -367,6 +368,7 @@ body {
   font-size: 12px;
   margin-top: 0;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .tsSideBarHeader {
@@ -392,6 +394,18 @@ body {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
+}
+
+.tsProductInformationSubHeader {
+  font-family: 'PT Sans', serif;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+.tsProductInformationBody {
+  font-size: 13px;
+  margin-top: 2px;
 }
 
 .tsSideBarTextRating {
@@ -553,6 +567,17 @@ body {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+}
+
+#tsImportantInformationHeader {
+  color: #c60;
+  font-size: 16px;
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-weight: 700;
+}
+
+#tsImportantInformationSubContainer {
+  margin-left: 30px;
 }
 
 .MuiRating-sizeSmall {

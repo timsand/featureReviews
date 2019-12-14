@@ -28,6 +28,36 @@ var listOfTitles = [
 var listOfDates = [
   'June 13, 2017', 'July 8, 2019', 'December 2, 2019', 'December 2, 2019', 'December 2, 2019', 'January 14, 2016', 'August 4, 2018'
 ]
+var foodList = [
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned1.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned2.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned3.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned4.jpeg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned5.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned6.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned7.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned8.jpeg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned9.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/food/canned10.jpg'
+]
+var sportsList = [
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/sports/basketball1.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/sports/basketball2.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/sports/basketball3.jpeg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/sports/basketball4.jpeg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/sports/basketball5.jpeg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/sports/basketball6.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/sports/basketball7.jpeg'
+]
+var disclaimerText = [
+  '"*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.\n\nStatements regarding dietary supplements have not been evaluated by the FDA and are not intended to diagnose, treat, cure, or prevent any disease or health condition."'
+]
+var safetyWarning = [
+  'These products are incredibly dangerous. Use them at your own peril. If you use this product, you will die of radition poisoning. We super seriously guarantee it. But hey, buy our stuff anyway please!',
+  'The products are totally safe. We promise that if you take these products, you will not die a slow and gruesome death from radiation poisoning. Whoever told you that is CLEARLY lying',
+  'Our product is tested and safe for consumption. We take great pride in making sure that all of our products are safe for all ages. If you have any issues, please do not hesitate to reach out to our customer service hotline!'
+]
+var foodIngredients = [
+  'Flour, Lead, Mostly clean water, Grass, A dash of radiation, A heaping spoonful of milk, sugar'
+]
+var sportsDirections = [
+  'This is a product for you enjoyment. Use however you see fit, but please read the attached directions on the product. We were too lazy to post them to the website, so you are going to have to dig into the product and read them yourself. Please do not contact us ever for any reason. Contact Gammazon instead (good luck).'
+]
+var foodDirections = [
+  'Unpack from the container and heat for three minutes. If you do not have a stove to heat, then just eat cold/lukewarm (not recommended). Feel free to add any and all toppings that you choose to the product. If these directions are not clear enough, please ask anyone but us for further assistance.'
+]
 var ratings = [1, 2, 3, 4, 5];
 // var primePantry = [{Taste: 0, Rated: 0, Total: 0}, {Nutrition: 0, Rated: 0, Total: 0}, {Price: 0, Rated: 0, Total: 0}];
 var primePantry = { Taste: { Total: 0, Rated: 0 }, Nutrition: { Total: 0, Rated: 0 }, Price: { Total: 0, Rated: 0 } };
@@ -58,15 +88,21 @@ fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon 
       var threeStarRatings = 0;
       var fourStarRatings = 0;
       var fiveStarRatings = 0;
+      items[i].disclaimerText = disclaimerText[0];
       items[i].comments = [];
       items[i].categoryRatings = [];
-      if (items[i].category === "sports & Outdoors") {
+      if (items[i].category === "sports & Outdoors" || items[i].category === "Sports & Outdoors") {
         items[i].categoryRatings = { Fun: { Total: 0, Rated: 0, Overall: 0 }, Durability: { Total: 0, Rated: 0, Overall: 0 }, Price: { Total: 0, Rated: 0, Overall: 0 } };
-      } else if (items[i].category === "health & personal care") {
+        items[i].safetyWarning = safetyWarning[(Math.floor(Math.random() * safetyWarning.length))];
+        items[i].directions = sportsDirections[0]
+      } else if (items[i].category === "health & personal care" || items[i].category === "Health & personal care") {
         items[i].categoryRatings = { Style: { Total: 0, Rated: 0, Overall: 0 }, Accessibility: { Total: 0, Rated: 0, Overall: 0 }, Price: { Total: 0, Rated: 0, Overall: 0 } };
       } else if (items[i].category === "Prime Wardrobe") {
         items[i].categoryRatings = { Fit: { Total: 0, Rated: 0, Overall: 0 }, Style: { Total: 0, Rated: 0, Overall: 0 }, radiationProtection: { Total: 0, Rated: 0, Overall: 0 } };
       } else {
+        items[i].foodIngredients = foodIngredients[0];
+        items[i].directions = foodDirections[0];
+        items[i].safetyWarning = safetyWarning[(Math.floor(Math.random() * safetyWarning.length))];
         items[i].categoryRatings = { Taste: { Total: 0, Rated: 0, Overall: 0 }, Nutrition: { Total: 0, Rated: 0, Overall: 0 }, Price: { Total: 0, Rated: 0, Overall: 0 } };
       }
       for (let x = 0; x < 30; x++) {
@@ -80,7 +116,7 @@ fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon 
         idx = Math.floor(Math.random() * ratings.length);
         let rating = ratings[idx]
 
-        if (items[i].category === "sports & Outdoors") {
+        if (items[i].category === "sports & Outdoors" || items[i].category === "Sports & Outdoors") {
           let rando = Math.floor(Math.random() * 10);
 
           if (rando !== 8) {
@@ -101,7 +137,7 @@ fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon 
             items[i].categoryRatings.Price.Overall = ((items[i].categoryRatings.Price.Total) / (items[i].categoryRatings.Price.Rated))
           }
 
-        } else if (items[i].category === "health & personal care") {
+        } else if (items[i].category === "health & personal care" || items[i].category === "Health & personal care") {
           let rando = Math.floor(Math.random() * 10);
 
           if (rando !== 8) {
@@ -211,6 +247,34 @@ fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon 
           items[i].individualRatings = individualRatings;
         }
         items[i].comments.push(comment);
+        var secondCount = 0;
+        if (x === 29) {
+          if (items[i].category === "sports & Outdoors" || items[i].category === "Sports & Outdoors") {
+            sportsList.forEach((url) => {
+              secondCount++;
+              let info = {};
+              let idx = Math.floor(Math.random() * 30)
+              info.url = url;
+              info.id = items[i].comments[idx].id;
+              info.pictureId = secondCount;
+              items[i].comments[idx].pictureArray.push(info);
+              items[i].totalPictures.push(info);
+            });
+          } else if (items[i].category === "Prime Pantry") {
+            if (i !== 0) {
+              foodList.forEach((url) => {
+                secondCount++;
+                let info = {};
+                let idx = Math.floor(Math.random() * 30)
+                info.url = url;
+                info.id = items[i].comments[idx].id;
+                info.pictureId = secondCount;
+                items[i].comments[idx].pictureArray.push(info);
+                items[i].totalPictures.push(info);
+              });
+            }
+          }
+        }
         items[i].comments.sort((a, b) => { return b.helpfulCount - a.helpfulCount })
       }
     }

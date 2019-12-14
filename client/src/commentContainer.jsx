@@ -29,7 +29,7 @@ const CommentContainer = (props) => {
       </div>
       <div id="tsBottomCommentButtonsContainer">
         <a id="tsShowAllReviews" onClick={props.showAllReviews}>See all customer reviews</a>
-        <button className="tsCommentBoxSubmitReview">Write a customer review</button>
+        <button className="tsCommentBoxSubmitReview" onClick={props.writeReview}>Write a customer review</button>
       </div>
     </div>
   )
