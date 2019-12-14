@@ -37,13 +37,6 @@ const ByInterests = (props) => {
       <span className="tsHelpfulSubmitted">Thank you for your feedback.</span>
     </div>
     )}
-      {/* <div id="tsInterestSubContainerEnd">
-        <span id="tsFeatureHelpfulQ">Is this feature helpful?</span>
-        <div>
-          <button className="tsInterestsButton">Yes</button>
-          <button className="tsInterestsButton">No</button>
-        </div>
-      </div> */}
       <div className="tsSeperator"></div>
     </div>
   )

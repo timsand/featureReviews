@@ -83,6 +83,16 @@ body {
   color: #555
 }
 
+.tsPictureModalCommentText {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 225px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height:150px /* fallback */
+}
+
 .tsTopBar {
   font-weight: 900;
   font-size: small;
@@ -98,8 +108,11 @@ body {
   height: 28px;
   border-bottom: 1px solid gray;
   position: absolute;
-  bottom: 87%;
-  right: 35%;
+  top: -20px;
+  left: 0;
+  margin-bottom: 10px;
+  /* bottom: 87%;
+  right: 35%; */
 }
 
 .tsCommentButton:hover {
@@ -273,7 +286,8 @@ body {
 
 .tsHistogramContainer {
   display: flex;
-  justify-content: flex-start;
+  height: 20px;
+  width: 300px;
 }
 
 .tsHistogramContainer > * {

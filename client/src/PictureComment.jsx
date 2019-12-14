@@ -31,10 +31,13 @@ const PictureComment = (props) => {
 
   return (
     <div>
-      <div className="tsTopBar">
+      {/* <div className="tsTopBar">
         <h4 onClick={props.handleClose} className="tsCloseButton">X</h4>
-      </div>
+      </div> */}
       <div className={classes.tsPictureModal}>
+        <div className="tsTopBar">
+          <h4 onClick={props.handleClose} className="tsCloseButton">X</h4>
+        </div>
         <div className="tsPictureModalGalleryBar">
           <img onClick={props.clearComment} src="https://gammazon-users.s3.us-east-2.amazonaws.com/gallery.png"></img>
           <span onClick={props.clearComment}>View Image Gallery</span>
@@ -57,7 +60,7 @@ const PictureComment = (props) => {
               <span>By {props.comment.person[0]} on {date}</span>
             </div>
             <div className="tsPictureModalCommentBody">
-              <span>{props.comment.body}</span>
+              <p className="tsPictureModalCommentText">{props.comment.body}</p>
             </div>
             <div className="tsPictureModalCommentBottom">
               <span>Images in this review</span>

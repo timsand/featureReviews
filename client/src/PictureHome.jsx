@@ -40,10 +40,13 @@ const PictureHome = (props) => {
 
   return (
     <div>
+      {/* <div className="tsTopBar">
+        <h4 onClick={props.handleClose} className="tsCloseButton">X</h4>
+      </div> */}
+      <div className={classes.tsPictureModal}>
       <div className="tsTopBar">
         <h4 onClick={props.handleClose} className="tsCloseButton">X</h4>
       </div>
-      <div className={classes.tsPictureModal}>
         <div className="tsPictureModalContainer">
           {pictureMain}
         </div>
