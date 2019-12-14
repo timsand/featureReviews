@@ -82,22 +82,24 @@ body {
   color: #555
 }
 
-/* .tsTopBar {
+.tsTopBar {
   font-weight: 900;
   font-size: small;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   background: rgb(213, 213, 213);
   background: linear-gradient(
     0deg,
     rgba(213, 213, 213) 0%,
     rgba(255, 255, 255) 79%
   );
-  width: 550px;
-  height: 20px;
+  width: 565px;
+  height: 28px;
   border-bottom: 1px solid gray;
   position: absolute;
-} */
+  bottom: 87%;
+  right: 35%;
+}
 
 .tsCommentButton:hover {
   cursor: pointer;
@@ -226,6 +228,13 @@ body {
   cursor: pointer;
 }
 
+.tsCloseButton {
+  text-emphasis: bold;
+  padding-right: 15px;
+  margin-top: .5%;
+  font-weight: 900;
+  cursor: pointer;
+}
 
 .tsReportAbuseButton {
   border: none;

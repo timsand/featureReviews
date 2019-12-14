@@ -12,12 +12,12 @@ const PictureHome = (props) => {
   const useStyles = makeStyles(theme => ({
     tsPictureModal: {
       position: 'absolute',
-      width: 500,
+      width: 501,
       height: 500,
-      bottom: '25%',
-      right: '50%',
+      bottom: '20%',
+      right: '35%',
       backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
+      borderTop: '1px solid #808080',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     }
@@ -39,9 +39,14 @@ const PictureHome = (props) => {
 
 
   return (
-    <div className={classes.tsPictureModal}>
-      <div className="tsPictureModalContainer">
-        {pictureMain}
+    <div>
+      <div className="tsTopBar">
+        <h4 onClick={props.handleClose} className="tsCloseButton">X</h4>
+      </div>
+      <div className={classes.tsPictureModal}>
+        <div className="tsPictureModalContainer">
+          {pictureMain}
+        </div>
       </div>
     </div>
   )

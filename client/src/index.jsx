@@ -41,7 +41,6 @@ class App extends React.Component {
   getAllComments() {
     Axios.get('comments/8', {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
       .then((data) => {
-        console.log(data);
         var comments = data.data[0].comments;
         var title = data.data[0].name;
         var categoryRatings = data.data[0].categoryRatings

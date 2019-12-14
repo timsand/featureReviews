@@ -97,9 +97,7 @@ class PictureModal extends React.Component {
           </div>
           <a id="tsPictureModalAnchor" onClick={this.handleOpen}>See all customer images</a>
           <Modal open={this.state.open} onClose={this.handleClose}>
-            <div>
-              <PictureComment changeSubImage={this.changeSubImage} title={this.props.title} currentPicture={this.state.currentPicture} comment={this.state.currentComment} totalPictures={this.props.totalPictures} clearComment={this.clearComment}/>
-            </div>
+              <PictureComment handleClose={this.handleClose} changeSubImage={this.changeSubImage} title={this.props.title} currentPicture={this.state.currentPicture} comment={this.state.currentComment} totalPictures={this.props.totalPictures} clearComment={this.clearComment}/>
           </Modal>
         </div>
       )
@@ -112,9 +110,7 @@ class PictureModal extends React.Component {
           </div>
           <a id="tsPictureModalAnchor" onClick={this.handleOpen}>See all customer images</a>
           <Modal open={this.state.open} onClose={this.handleClose}>
-            <div>
-              <PictureHome totalPictures={this.props.totalPictures} changePicture={this.changePicture} />
-            </div>
+              <PictureHome handleClose={this.handleClose} totalPictures={this.props.totalPictures} changePicture={this.changePicture} />
           </Modal>
         </div>
       )
