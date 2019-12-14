@@ -213,9 +213,9 @@ body {
 }
 
 .tsPictureModalImageEmbedded > img {
-  margin-right: 3px;
-  height: 115px;
-  width: 115px;
+  margin-right: 5px;
+  height: 150px;
+  width: 150px;
 }
 
 .tsPictureModalImageEmbedded > img:hover {
