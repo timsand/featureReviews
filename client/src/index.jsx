@@ -35,11 +35,12 @@ class App extends React.Component {
     this.handleSortChange = this.handleSortChange.bind(this);
     this.showAllReviews = this.showAllReviews.bind(this);
     this.sidebarHelpfulClicked = this.sidebarHelpfulClicked.bind(this);
+    this.collapseComments = this.collapseComments.bind(this);
   }
 
 
-  getAllComments(id=1) {
-    Axios.get(`comments/${id}`, {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
+  getAllComments(id = 1) {
+    Axios.get(`comments/${id}`, { baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/" })
       .then((data) => {
         var comments = data.data[0].comments;
         var title = data.data[0].name;
@@ -59,18 +60,18 @@ class App extends React.Component {
         var totalPictures = data.data[0].totalPictures
         var average = data.data[0].average
         var individualRatings = data.data[0].individualRatings;
-        this.setState({ 
+        this.setState({
           disclaimer: disclaimer,
           directions: directions,
           foodIngredients: foodIngredients,
           safetyWarning: safetyWarning,
-          comments: comments, 
+          comments: comments,
           category: category,
-          totalRating: average, 
-          title: title, 
+          totalRating: average,
+          title: title,
           categoryRatings: categoryRatings,
-          individualRatings: individualRatings, 
-          totalPictures: totalPictures 
+          individualRatings: individualRatings,
+          totalPictures: totalPictures
         })
       })
   }
@@ -109,11 +110,15 @@ class App extends React.Component {
   }
 
   showAllReviews() {
-    this.setState({commentNumberToDisplay: this.state.comments.length})
+    this.setState({ commentNumberToDisplay: this.state.comments.length })
   }
 
   sidebarHelpfulClicked() {
-    this.setState({featureHelpfulClicked: true});
+    this.setState({ featureHelpfulClicked: true });
+  }
+
+  collapseComments() {
+    this.setState({ commentNumberToDisplay: 10 })
   }
 
 
@@ -134,7 +139,7 @@ class App extends React.Component {
     Axios.patch('comments', {
       id: index,
       itemName: itemName
-    }, {baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/"})
+    }, { baseURL: "http://gammazonreviews.us-east-2.elasticbeanstalk.com/" })
     this.setState({ comments: comments })
   }
 
@@ -167,7 +172,7 @@ class App extends React.Component {
 
       <div>
         <div className="tsBigSeperator"></div>
-        <ProductInformation 
+        <ProductInformation
           category={this.state.category}
           disclaimer={this.state.disclaimer}
           directions={this.state.directions}
@@ -176,50 +181,52 @@ class App extends React.Component {
         />
         <div className="tsBigSeperator"></div>
         <div id="tsSubReviewContainer">
-          <Sidebar 
+          <Sidebar
             filterByStars={this.filterByStars}
             featureHelpfulClicked={this.state.featureHelpfulClicked}
             sidebarHelpfulClicked={this.sidebarHelpfulClicked}
-            totalRating={this.state.totalRating} 
-            individualRatings={this.state.individualRatings} 
+            totalRating={this.state.totalRating}
+            individualRatings={this.state.individualRatings}
             totalComments={this.state.comments.length}
-            categoryRatings={this.state.categoryRatings} 
+            categoryRatings={this.state.categoryRatings}
             writeReview={this.writeReview}
           />
           <div>
-          {this.state.totalPictures.length ? (
-            <PictureModal 
-              title={this.state.title} 
-              totalPictures={this.state.totalPictures} 
-              comments={this.state.comments} 
-            />
-          ) : (null)}
-          {this.state.filteredComments.length ? (
-            <CommentContainer 
-              showAllReviews={this.showAllReviews} 
-              comments={this.state.filteredComments} 
-              commentNumberToDisplay={this.state.commentNumberToDisplay} 
-              helpfulClicked={this.helpfulClicked} 
-              clearFilter={this.clearFilter} 
-              writeReview={this.writeReview}
-            />
-          ) : (
-            <CommentContainer 
-              showAllReviews={this.showAllReviews} 
-              handleSortChange={this.handleSortChange} 
-              comments={this.state.comments} 
-              commentNumberToDisplay={this.state.commentNumberToDisplay} 
-              helpfulClicked={this.helpfulClicked} 
-              sortByDate={this.sortByDate} 
-              writeReview={this.writeReview}
-            />
-          )
-          }
+            {this.state.totalPictures.length ? (
+              <PictureModal
+                title={this.state.title}
+                totalPictures={this.state.totalPictures}
+                comments={this.state.comments}
+              />
+            ) : (null)}
+            {this.state.filteredComments.length ? (
+              <CommentContainer
+                showAllReviews={this.showAllReviews}
+                comments={this.state.filteredComments}
+                commentNumberToDisplay={this.state.commentNumberToDisplay}
+                helpfulClicked={this.helpfulClicked}
+                clearFilter={this.clearFilter}
+                writeReview={this.writeReview}
+                collapseComments={this.collapseComments}
+              />
+            ) : (
+                <CommentContainer
+                  showAllReviews={this.showAllReviews}
+                  handleSortChange={this.handleSortChange}
+                  comments={this.state.comments}
+                  commentNumberToDisplay={this.state.commentNumberToDisplay}
+                  helpfulClicked={this.helpfulClicked}
+                  sortByDate={this.sortByDate}
+                  writeReview={this.writeReview}
+                  collapseComments={this.collapseComments}
+                />
+              )
+            }
+          </div>
         </div>
-      </div>
-      <div className="tsBigSeperator"></div>
+        <div className="tsBigSeperator"></div>
 
-    </div>
+      </div>
 
     )
   }

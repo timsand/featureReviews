@@ -59,6 +59,21 @@ var sportsDirections = [
 var foodDirections = [
   'Unpack from the container and heat for three minutes. If you do not have a stove to heat, then just eat cold/lukewarm (not recommended). Feel free to add any and all toppings that you choose to the product. If these directions are not clear enough, please ask anyone but us for further assistance.'
 ]
+var hazmatPics = [
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/02/hazmat01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/02/hazmat02.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/02/hazmat03.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/02/hazmat04.jpeg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/02/hazmat05.png'
+]
+var bcPics = [
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/03/bc1.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/03/bc2.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/03/bc3.jpeg'
+]
+var aidPics = [
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/04/aid01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/04/aid02.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/04/aid03.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/04/aid04.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/04/aid05.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/04/aid06.jpg',
+  'https://gammazon-users.s3.us-east-2.amazonaws.com/04/aid07.jpg'
+]
 var ratings = [1, 2, 3, 4, 5];
 // var primePantry = [{Taste: 0, Rated: 0, Total: 0}, {Nutrition: 0, Rated: 0, Total: 0}, {Price: 0, Rated: 0, Total: 0}];
 var primePantry = { Taste: { Total: 0, Rated: 0 }, Nutrition: { Total: 0, Rated: 0 }, Price: { Total: 0, Rated: 0 } };
@@ -70,6 +85,7 @@ var health = { Style: { Total: 0, Rated: 0 }, Accessibility: { Total: 0, Rated: 
 var sports = { Fun: { Total: 0, Rated: 0 }, Durability: { Total: 0, Rated: 0 }, Price: { Total: 0, Rated: 0 } };
 
 var items = []
+var totalCounter = [];
 fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon Products List  - PRODUCT LIST.csv')
   .pipe(csv())
   .on('data', (row) => {
@@ -79,6 +95,7 @@ fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon 
     console.log('CSV file successfully processed');
 
     for (let i = 0; i < items.length; i++) {
+      var miniCount = {};
       var itemName = items[i].name;
       var total = 0;
       var average;
@@ -239,6 +256,9 @@ fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon 
         if (x === 29) {
           average = total / 30;
           items[i].average = average;
+          miniCount.id = i + 1;
+          miniCount.average = average;
+          totalCounter.push(miniCount);
           items[i].totalPictures = totalPictures;
           individualRatings.push({ oneStarRatings: oneStarRatings })
           individualRatings.push({ twoStarRatings: twoStarRatings })
@@ -282,7 +302,7 @@ fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon 
 
 
     const urlList = [
-      'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-01.png', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg',
+      'https://gammazon-users.s3.us-east-2.amazonaws.com/01/water01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-02.jpg',
       'https://gammazon-users.s3.us-east-2.amazonaws.com/01/01-03.png', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/02-01.jpg',
       'https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/03-02.jpg',
       'https://gammazon-users.s3.us-east-2.amazonaws.com/01/04-01.jpg', 'https://gammazon-users.s3.us-east-2.amazonaws.com/01/05.png',
@@ -301,6 +321,61 @@ fs.createReadStream('/Users/tim/Desktop/moreFeatures/featureReviews/db/Gammazon 
       items[0].comments[idx].pictureArray.push(info);
       items[0].totalPictures.push(info);
     });
+
+    hazmatPics.forEach((url) => {
+      count++;
+      let info = {};
+      let idx = Math.floor(Math.random() * 30)
+      info.url = url;
+      info.id = items[1].comments[idx].id;
+      info.pictureId = count;
+      items[1].comments[idx].pictureArray.push(info);
+      items[1].totalPictures.push(info);
+    });
+
+    bcPics.forEach((url) => {
+      count++;
+      let info = {};
+      let idx = Math.floor(Math.random() * 30)
+      info.url = url;
+      info.id = items[3].comments[idx].id;
+      info.pictureId = count;
+      items[3].comments[idx].pictureArray.push(info);
+      items[3].totalPictures.push(info);
+    });
+
+    aidPics.forEach((url) => {
+      count++;
+      let info = {};
+      let idx = Math.floor(Math.random() * 30)
+      info.url = url;
+      info.id = items[4].comments[idx].id;
+      info.pictureId = count;
+      items[4].comments[idx].pictureArray.push(info);
+      items[4].totalPictures.push(info);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    items[0].totalCounter = totalCounter;
 
 
 

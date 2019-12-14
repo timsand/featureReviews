@@ -1,13 +1,13 @@
 import React from 'react';
 import Comment from './comment.jsx';
-import { Hidden } from '@material-ui/core';
 
 
 const CommentContainer = (props) => {
   let comments = props.comments.map((val, i) => {
     return <Comment
       id={val.id} body={val.body} date={val.date} helpfulCount={val.helpfulCount} itemName={val.itemName} person={val.person[0]} rating={val.rating}
-      title={val.title} key={i} helpfulClicked={props.helpfulClicked} buttonClicked={val.buttonClicked} avatarUrl={val.person[1]} verified={val.verified} writeReview={props.writeReview}>
+      title={val.title} key={i} helpfulClicked={props.helpfulClicked} buttonClicked={val.buttonClicked} avatarUrl={val.person[1]} verified={val.verified}
+      writeReview={props.writeReview}>
     </Comment>
   })
   let renderedComments = comments.splice(0, props.commentNumberToDisplay);
@@ -28,7 +28,15 @@ const CommentContainer = (props) => {
         There are {props.comments.length} customer reviews and {props.numberOfRatings} customer ratings.
       </div>
       <div id="tsBottomCommentButtonsContainer">
-        <a id="tsShowAllReviews" onClick={props.showAllReviews}>See all customer reviews</a>
+        {props.commentNumberToDisplay == 10 ? (
+          <div>
+            <a id="tsShowAllReviews" onClick={props.showAllReviews}>See all customer reviews</a>
+          </div>
+        ) : (
+            <div>
+              <a id="tsShowAllReviews" onClick={props.collapseComments}>Show fewer reviews</a>
+            </div>
+          )}
         <button className="tsCommentBoxSubmitReview" onClick={props.writeReview}>Write a customer review</button>
       </div>
     </div>
